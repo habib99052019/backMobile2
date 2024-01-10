@@ -10,7 +10,11 @@ const  prodSchema  = new mongoose.Schema({
     images:[],
     caractes:[],
     chat:[], /// kol produits aandou chat mte3ou ynijmou ykalmou akthir min wehed aala produit mte3ou,
-    reviews:[],
+    //reviews:[],
+    likes:Number,
+    reviews:Number,
+    date:String,
+ 
     // ville:String,
     // city:String, /// kol produit aandou review mte3ou list fergha khaleha kima chat w caractes
     catigories:String

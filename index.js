@@ -39,11 +39,11 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   storageBucket: "gs://imagestorge-f1442.appspot.com"
 });
-app.post('/backend/upload', async (req, res) => {
+app.post('/upload', async (req, res) => {
 bucket = admin.storage().bucket();
 
 
-filename="req.body.path"
+ const filename=req.body.path
 
 
   const metadata = {
