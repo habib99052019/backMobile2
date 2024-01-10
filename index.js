@@ -39,19 +39,19 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   storageBucket: "gs://imagestorge-f1442.appspot.com"
 });
-
+app.post('/backend/upload', async (req, res) => {
 bucket = admin.storage().bucket();
 
-var filename = "/Users/user/Downloads/1.png"
 
-async function uploadFile() {
+filename="req.body.path"
+
 
   const metadata = {
     metadata: {
       // This line is very important. It's to create a download token.
       firebaseStorageDownloadTokens: uuid()
     },
-    contentType: 'image/png',
+    contentType: `image/${req.body.type}`,
     cacheControl: 'public, max-age=31536000',
   };
 
@@ -62,13 +62,10 @@ async function uploadFile() {
     metadata: metadata,
   });
 
-console.log(`https://firebasestorage.googleapis.com/v0/b/imagestorge-f1442.appspot.com/o/${filename}.png?alt=media&token=91837f7f-c9f0-404a-877e-babf61a7c4cf
-`);
+res.send({source:`https://firebasestorage.googleapis.com/v0/b/imagestorge-f1442.appspot.com/o/${req.body.originaleName}.png?alt=media&token=91837f7f-c9f0-404a-877e-babf61a7c4cf
+`});
 
-
-}
-
-uploadFile().catch(console.error);
+})
 //routes
 // "bcrypt": "^5.0.0",
 // "body-parser": "^1.19.0",
