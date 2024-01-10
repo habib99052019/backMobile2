@@ -2,6 +2,8 @@ console.log("welcom mr taher")
 const express = require('express')//obligtoir mil module express
 var bodyParser = require('body-parser');//yrdha json mhma knyt yli jya
 const app = express();//kima hekka express module  le routre
+const uuid = require('uuid-v4');
+
 //llll
 //activer les api
 //aaaa
@@ -18,6 +20,7 @@ const user=require('./router/userApi')
 const prod=require('./router/prodApi.js')
 const pub=require('./router/pubApi.js')
 const cat=require('./router/catigorieApi.js')
+var admin = require("firebase-admin");
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -29,6 +32,43 @@ app.use('/prod',prod);
 app.use('/cat',cat);
 app.use('/pub',pub);
 
+
+var serviceAccount = require("./serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  storageBucket: "gs://imagestorge-f1442.appspot.com"
+});
+
+bucket = admin.storage().bucket();
+
+var filename = "/Users/user/Downloads/1.png"
+
+async function uploadFile() {
+
+  const metadata = {
+    metadata: {
+      // This line is very important. It's to create a download token.
+      firebaseStorageDownloadTokens: uuid()
+    },
+    contentType: 'image/png',
+    cacheControl: 'public, max-age=31536000',
+  };
+
+  // Uploads a local file to the bucket
+  await bucket.upload(filename, {
+    // Support for HTTP requests made with `Accept-Encoding: gzip`
+    gzip: true,
+    metadata: metadata,
+  });
+
+console.log(`https://firebasestorage.googleapis.com/v0/b/imagestorge-f1442.appspot.com/o/${filename}.png?alt=media&token=91837f7f-c9f0-404a-877e-babf61a7c4cf
+`);
+
+
+}
+
+uploadFile().catch(console.error);
 //routes
 // "bcrypt": "^5.0.0",
 // "body-parser": "^1.19.0",

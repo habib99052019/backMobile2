@@ -6,26 +6,23 @@ const catSchema = require('../models/catigories.js')
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 
-// async function func(){
-//     var cat = await create({
-//       name:"automobiles",
-//       types:["voitures","car"],
-//       carc:[{type:"pegeot", refs:['206',"205","106"]}],
-//       options:["aaa","bbbb","ccccc"],
+async function func(){
+    var cat1 = await catSchema.create({
+      name:"Peugeot",
+      refs:["206","106","205","301"],
+      
 
 
-//     })
-//     var cat = await create( {
-//         name:"immobliers",
-//         types:["vila","aprtement","dublex"],
-//         carc:[],
-//         options:["bathroom","bedRoom","kkkkk"],
+    })
+    var cat2 = await catSchema.create( {
+        name:"Fiat",
+       refs:["Doblo","500X","Ducato"],
   
   
-//       })
-
-// }
-// func()
+      })
+   console.log(cat1,cat2)
+}
+ func()
 console.log("declarer super cat")
 router.post('/', async (req, res) => {
   
