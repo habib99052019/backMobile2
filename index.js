@@ -63,11 +63,11 @@ console.log(filename)
     metadata: metadata,
   });
 
-res.send({source:`https://firebasestorage.googleapis.com/v0/b/imagestorge-f1442.appspot.com/o/${req.body.originaleName}.${req.body.type}?alt=media&token=91837f7f-c9f0-404a-877e-babf61a7c4cf
-`});
+res.send({source:true });
 
 })
-//routes
+//routes  res.send({source:`https://firebasestorage.googleapis.com/v0/b/imagestorge-f1442.appspot.com/o/${req.body.originaleName}.${req.body.type}?alt=media&token=91837f7f-c9f0-404a-877e-babf61a7c4cf
+//`});
 // "bcrypt": "^5.0.0",
 // "body-parser": "^1.19.0",
 // "express": "^4.17.1",
