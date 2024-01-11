@@ -40,11 +40,12 @@ admin.initializeApp({
   storageBucket: "gs://imagestorge-f1442.appspot.com"
 });
 app.post('/upload', async (req, res) => {
+
 bucket = admin.storage().bucket();
 
 
  const filename=req.body.path
-
+console.log(filename)
 
   const metadata = {
     metadata: {
@@ -62,7 +63,7 @@ bucket = admin.storage().bucket();
     metadata: metadata,
   });
 
-res.send({source:`https://firebasestorage.googleapis.com/v0/b/imagestorge-f1442.appspot.com/o/${req.body.originaleName}.png?alt=media&token=91837f7f-c9f0-404a-877e-babf61a7c4cf
+res.send({source:`https://firebasestorage.googleapis.com/v0/b/imagestorge-f1442.appspot.com/o/${req.body.originaleName}.${req.body.type}?alt=media&token=91837f7f-c9f0-404a-877e-babf61a7c4cf
 `});
 
 })
