@@ -3,7 +3,32 @@ const express = require('express')//obligtoir mil module express
 var bodyParser = require('body-parser');//yrdha json mhma knyt yli jya
 const app = express();//kima hekka express module  le routre
 const uuid = require('uuid-v4');
+const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
+
+// Configurer Cloudinary avec vos clés d'API
+cloudinary.config({
+  cloud_name: 'dd8zymrzq',
+  api_key: '872236541994287',
+  api_secret: 'vuisJwEo2Be_qMcnWEmPhakQTyIE',
+});
+
+// Endpoint pour le téléchargement d'images
+app.post('/upload2', upload.single('image'), async (req, res) => {
+  try {
+    // Télécharger l'image sur Cloudinary
+    const result = await cloudinary.uploader.upload(req.file.buffer.toString('base64'));
+
+    // Envoyer la réponse au client
+    res.json({ imageUrl: result.secure_url });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Une erreur est survenue lors du téléchargement de l\'image.' });
+  }
+});
 //llll
 //activer les api
 //aaaa
