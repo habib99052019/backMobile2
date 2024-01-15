@@ -1,0 +1,26 @@
+<form id="upload-form">
+    <input type="file" name="file" id="file-input" />
+    <button type="submit">Upload</button>
+  </form>
+  <script>
+    $(function () {
+      // Configuration de l'API Cloudinary
+      $.cloudinary.config({
+  cloud_name: 'dd8zymrzq',
+  api_key: '872236541994287',
+  api_secret: 'vuisJwEo2Be_qMcnWEmPhakQTyIE',
+});
+  
+      // Configuration de l'upload
+      $('#file-input').unsigned_cloudinary_upload('votre_dossier_de_stockage',
+        { cloud_name: 'votre_nom_de_cloudinary' },
+        { 
+          // Options supplémentaires si nécessaire
+        }
+      ).bind('cloudinarydone', function(e, data) {
+        // Gestion de l'upload réussi
+        console.log('Upload réussi !', data);
+      });
+    });
+  </script>
+    

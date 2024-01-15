@@ -5,9 +5,9 @@ const app = express();//kima hekka express module  le routre
 const uuid = require('uuid-v4');
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
-
+// const storage = multer.memoryStorage();
+// const upload = multer({ storage: storage });
+const fs = require('fs')
 
 // Configurer Cloudinary avec vos clés d'API
 cloudinary.config({
@@ -17,18 +17,7 @@ cloudinary.config({
 });
 
 // Endpoint pour le téléchargement d'images
-app.post('/upload2', upload.single('image'), async (req, res) => {
-  try {
-    // Télécharger l'image sur Cloudinary
-    const result = await cloudinary.uploader.upload(req.file.buffer.toString('base64'));
 
-    // Envoyer la réponse au client
-    res.json({ imageUrl: result.secure_url });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Une erreur est survenue lors du téléchargement de l\'image.' });
-  }
-});
 //llll
 //activer les api
 //aaaa
@@ -58,12 +47,42 @@ app.use('/cat',cat);
 app.use('/pub',pub);
 
 
-var serviceAccount = require("./serviceAccountKey.json");
+/*var serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   storageBucket: "gs://imagestorge-f1442.appspot.com"
 });
+async function uploadToCloudinary(locaFilePath) {
+  // locaFilePath :
+  // path of image which was just uploaded to "uploads" folder
+  var mainFolderName = "main"
+  var filePathOnCloudinary = mainFolderName + "/" + locaFilePath
+  // filePathOnCloudinary :
+  // path of image we want when it is uploded to cloudinary
+  return cloudinary.uploader.upload(locaFilePath,{"public_id":filePathOnCloudinary})
+  .then((result) => {
+    // Image has been successfully uploaded on cloudinary
+    // So we dont need local image file anymore
+    // Remove file from local uploads folder 
+    fs.unlinkSync(locaFilePath)
+    console.log({
+      message: "Success",
+      url:result.url
+    
+    })
+    return {
+      message: "Success",
+      url:result.url
+    };
+
+  }).catch((error) => {
+    // Remove file from local uploads folder 
+    fs.unlinkSync(locaFilePath)
+    return {message: "Fail",};
+  });
+}
+uploadToCloudinary("https://www.agoda.com/wp-content/uploads/2020/03/Fireworks-best-time-to-visit-Dubai-UAE.jpg")
 app.post('/upload', async (req, res) => {
 
 bucket = admin.storage().bucket();
@@ -108,6 +127,43 @@ res.send({source:true });
 // "synchronous-promise": "^2.0.15",
 // "xlsx": "^0.17.1"
 // app.listen(port,'127.0.0.1',()=>console.log('Server listen on the port ',port)) ;
-
+*/
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+      cb(null, 'uploads');
+      console.log(file);
+  },
+  filename: (req, file, cb) => {
+    name = Date.now() + file.originalname //path.extname(file.originalname);
+      console.log(file);
+      console.log(name);
+      cb(null, name);
+  }
+});
+const fileFilter = (req, file, cb) => {
+  cb(null, true);
+ /* if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/png' || file.mimetype == 'image/pdf') {
+      cb(null, true);
+  } else {
+      cb(null, false);
+  }*/
+}
+const upload = multer({ storage: storage, fileFilter: fileFilter });
+//Upload route
+app.post('/backend/upload', upload.single('image'), (req, res, next) => {
+  try {
+      /*return res.status(201).json({
+          message: 'File uploded successfully'
+      });*/
+      return res.status(201).json({
+          message: 'File uploded successfully',
+          source:''+name,
+          name:name
+      });
+      
+  } catch (error) {
+      console.error(error);
+  }
+});
 const port = process.env.PORT || 5900;
 app.listen(port,()=>console.log(`Server listen on the port ${port}`)) ;

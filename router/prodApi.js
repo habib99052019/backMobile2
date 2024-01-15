@@ -7,8 +7,59 @@ const userSchema = require('../models/user.js')
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 // async function func(){
-//     var prod = await prodSchema.find()
-//     console.log(prod)
+
+// var a="65a4f993275b403a456edbe7"
+
+//     var prod= await prodSchema.create( {
+//         "title": "title",
+//         "userPosterId": "65a4f993275b403a456edbe7",
+//         "description": "description",
+//         "isPub": false,
+//         "images": [
+//             "https://c4.wallpaperflare.com/wallpaper/846/173/87/5c1cbaf96bcec-wallpaper-preview.jpg",
+//             "https://c4.wallpaperflare.com/wallpaper/846/173/87/5c1cbaf96bcec-wallpaper-preview.jpg",
+//             "https://c4.wallpaperflare.com/wallpaper/846/173/87/5c1cbaf96bcec-wallpaper-preview.jpg",
+//             "https://c4.wallpaperflare.com/wallpaper/846/173/87/5c1cbaf96bcec-wallpaper-preview.jpg",
+//         ],
+//         "caractes": [
+//     {
+//             "details": [
+//             {
+//                     "title": "area",
+//                     "value": "area"
+//             },
+//             {
+//                     "title": "rooms",
+//                     "value": "rooms"
+//             },
+//             {
+//                     "title": "bathrooms",
+//                     "value": "bathrooms"
+//             },
+//             {
+//                     "title": "floor",
+//                     "value": "floor"
+//             },
+//             {
+//                     "title": "interior",
+//                     "value": "interior"
+//             },
+//             {
+//                     "title": "price",
+//                     "value": "price"
+//             }
+//         ],
+//         "options": []
+//     }
+//         ],
+//         "chat": [],
+//         "reviews": [],
+//         "ville": "beja",
+//         "city": "",
+//         "catigories": "house"
+//     })
+//    await userSchema.findByIdAndUpdate({ _id:a}, { $push: { products: prod._id } })
+
 
 // }
 // func()

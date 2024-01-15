@@ -12,7 +12,7 @@ const  prodSchema  = new mongoose.Schema({
     chat:[], /// kol produits aandou chat mte3ou ynijmou ykalmou akthir min wehed aala produit mte3ou,
     //reviews:[],
     likes:Number,
-    reviews:Number,
+    reviews:[],
     date:String,
  
     // ville:String,
