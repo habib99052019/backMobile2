@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router();
+
 const lodash=require('lodash')
 const prodSchema = require('../models/products.js')
 const userSchema = require('../models/user.js')
@@ -76,9 +77,15 @@ router.get('/', async (req, res) => {
     res.send(prod)
      
  });
-router.post('/add', async (req, res) => {
-  
-   var prod= await prodSchema.create( req.body)
+router.post('/add',  async (req, res) => {
+   
+             
+// console.log(req.body , typeOf(req.body))
+    
+
+   var prod= await prodSchema.create(req.body)
+   
+ 
    await userSchema.findByIdAndUpdate({ _id:req.body.userPosterId}, { $push: { products: prod._id } })
    res.send(prod)
     

@@ -22,13 +22,13 @@ cloudinary.config({
 //activer les api
 //aaaa
 //const port=3000//y
-app.use(express.json({ extended: false, limit: '50mb' }))
-app.use(express.urlencoded({ limit: '50mb', extended: false, parameterLimit: 50000 }))
-app.use(bodyParser.urlencoded({ extended: false }))
+// app.use(express.json({ extended: false, limit: '50mb' }))
+// app.use(express.urlencoded({ limit: '50mb', extended: false, parameterLimit: 50000 }))
+// app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 // app.use(bodyParser.json())
-app.use(express.json({ extended: false, limit: '50mb' }))
-app.use(express.urlencoded({ limit: '50mb', extended: false, parameterLimit: 50000 }))
+app.use(express.json({ extended: false, limit: '100mb' }))
+app.use(express.urlencoded({ limit: '100mb', extended: false, parameterLimit: 50000 }))
  const connect = require('./dataBase/connect')
 const user=require('./router/userApi')
 const prod=require('./router/prodApi.js')
