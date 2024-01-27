@@ -6,7 +6,7 @@ const catSchema = require('../models/catigories.js')
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 
-async function func(){
+/*async function func(){
     var cat1 = await catSchema.create({
       name:"Peugeot",
       refs:["206","106","205","301"],
@@ -21,8 +21,8 @@ async function func(){
   
       })
 
-}
- func()
+}*/
+// func()
 console.log("declarer super cat")
 router.post('/', async (req, res) => {
   
