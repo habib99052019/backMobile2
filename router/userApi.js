@@ -5,6 +5,7 @@ const userSchema = require('../models/user.js')
 
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
+var tab=[]
 // async function func(){
 //     var user = await userSchema.find()
 //     console.log(user)
@@ -23,7 +24,12 @@ router.get('/:id', async (req, res) => {
     var user=  await userSchema.findById(req.params.id).populate('products');
     res.send(user)
 })
+router.get('/zapier', async (req, res) => {
+
+    res.send(tab)
+})
 router.post('/zapier', async (req, res) => {
+tab.push(req.body)  
   res.send(req.body)
 })
 router.post('/adduser', async (req, res) => {
