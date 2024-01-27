@@ -26,7 +26,7 @@ router.get('/:id', async (req, res) => {
 })
 router.get('/zapier1', async (req, res) => {
 
-    res.send([{tab:[]})
+    res.send({tab:[]})
 })
 router.post('/zapier', async (req, res) => {
 tab.push(req.body)  
