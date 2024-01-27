@@ -24,14 +24,11 @@ router.get('/:id', async (req, res) => {
     var user=  await userSchema.findById(req.params.id).populate('products');
     res.send(user)
 })
-router.get('/zapier1', async (req, res) => {
+router.get('/t', async (req, res) => {
+  
     var users = await userSchema.find()
     
-    res.send(users)
-})
-router.post('/zapier', async (req, res) => {
-tab.push(req.body)  
-  res.send(req.body)
+        res.send(users)
 })
 router.post('/adduser', async (req, res) => {
     try{
