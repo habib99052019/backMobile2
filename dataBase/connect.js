@@ -12,7 +12,9 @@ const mongoose = require('mongoose');
 
 //mongoose.connect('mongodb+srv://webmaster:webmaster123@cluster0.jc0r9.mongodb.net/backKoorea',
 //?retryWrites=true&w=majori 
-mongoose.connect('mongodb+srv://webmaster:webmaster123@cluster0.jc0r9.mongodb.net/comm10002',
+//mongodb+srv://habibfullstack90:<password>@cluster0.owwrwt9.mongodb.net/
+//mongodb+srv://webmaster:webmaster123@cluster0.jc0r9.mongodb.net/comm10002
+mongoose.connect('mongodb+srv://habibfullstack90:suMi5SdKCbCXPyTx@cluster0.owwrwt9.mongodb.net/com',
 {useNewUrlParser: true, 
 useUnifiedTopology: true,
 }).then(()=>console.log('Successfully connected to database.')).catch((e)=>console.error('Error in connection',e));
