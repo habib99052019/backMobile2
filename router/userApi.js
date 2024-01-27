@@ -23,7 +23,9 @@ router.get('/:id', async (req, res) => {
     var user=  await userSchema.findById(req.params.id).populate('products');
     res.send(user)
 })
-
+router.post('/zapier', async (req, res) => {
+  res.send(req.body)
+})
 router.post('/adduser', async (req, res) => {
     try{
         var user = await userSchema.findOne({email:req.body.email});
