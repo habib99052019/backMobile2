@@ -11,7 +11,6 @@ const tab=[]
 // async function func(){
 
 // var a="65a4f993275b403a456edbe7"
-
 //     var prod= await prodSchema.create( {
 //         "title": "title",
 //         "userPosterId": "65a4f993275b403a456edbe7",
