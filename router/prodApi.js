@@ -74,14 +74,14 @@ router.get('/', async (req, res) => {
  });
 router.get('/aaa', async (req, res) => {
   
-    var prods= await prodSchema.find()
-    res.send(prods)
+   
+    res.send(tab)
      
  });
  router.get('/:id', async (req, res) => {
-  
+    var  prod = await prodSchema.findById(req.params.id)
     
-    res.send(tab)
+    res.send(prod)
      
  });
 router.post('/add',  async (req, res) => {
