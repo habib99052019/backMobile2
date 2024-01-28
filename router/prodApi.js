@@ -83,7 +83,7 @@ router.post('/zap', async (req, res) => {
   // ...
    tab.push(dataFromFacebook)
  // res.status(200).json({ message: 'Data received successfully' });
-   res.status(200).json(req.body);
+   await res.status(200).json(req.body);
 
 
      
