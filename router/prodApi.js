@@ -82,7 +82,8 @@ router.post('/zap', async (req, res) => {
   // Handle the data and store it in MongoDB if needed
   // ...
    tab.push(dataFromFacebook)
-  res.status(200).json({ message: 'Data received successfully' });
+ // res.status(200).json({ message: 'Data received successfully' });
+   res.status(200).json(req.body);
 
 
      
