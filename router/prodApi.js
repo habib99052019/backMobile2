@@ -77,9 +77,13 @@ router.get('/aaa', async (req, res) => {
     res.send(tab)
      
  });
-router.get('/zap', async (req, res) => {
-  
-res.send(req)
+router.post('/zap', async (req, res) => {
+    const dataFromFacebook = req.body;
+  // Handle the data and store it in MongoDB if needed
+  // ...
+   tab.push(dataFromFacebook)
+  res.status(200).json({ message: 'Data received successfully' });
+
 
      
  });
