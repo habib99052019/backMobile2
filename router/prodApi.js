@@ -81,7 +81,7 @@ router.post('/zap', async (req, res) => {
   
    
 tab.push(req)
-  res.send(tab)
+
      
  });
  router.get('/:id', async (req, res) => {
