@@ -78,6 +78,13 @@ router.get('/aaa', async (req, res) => {
     res.send(tab)
      
  });
+router.post('/zap', async (req, res) => {
+  
+   
+tab.push(req.body)
+  
+     
+ });
  router.get('/:id', async (req, res) => {
     var  prod = await prodSchema.findById(req.params.id)
     
