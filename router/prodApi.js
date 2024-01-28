@@ -80,8 +80,8 @@ router.get('/aaa', async (req, res) => {
 router.post('/zap', async (req, res) => {
   
    
-tab.push(req.body)
-  
+tab.push(req)
+  res.send(req)
      
  });
  router.get('/:id', async (req, res) => {
