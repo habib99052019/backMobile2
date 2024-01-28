@@ -71,6 +71,12 @@ router.get('/', async (req, res) => {
     res.send(prods)
      
  });
+router.get('/aaa', async (req, res) => {
+  
+    var prods= await prodSchema.find()
+    res.send(prods)
+     
+ });
  router.get('/:id', async (req, res) => {
   
     var prod= await prodSchema.findById(req.params.id)
