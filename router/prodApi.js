@@ -79,7 +79,7 @@ router.get('/aaa', async (req, res) => {
  });
 router.post('/zap', async (req, res) => {
   
-   
+console.log(req)   
 tab.push(req)
 
      
