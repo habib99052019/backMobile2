@@ -77,13 +77,22 @@ router.get('/aaa', async (req, res) => {
     res.send(tab)
      
  });
-router.post('/zap', async (req, res) => {
-    const dataFromFacebook = req
-  // Handle the data and store it in MongoDB if needed
-  // ...
-   tab.push(dataFromFacebook)
- // res.status(200).json({ message: 'Data received successfully' });
-   await res.status(200).json(req.body);
+// router.post('/zap', async (req, res) => {
+//     const dataFromFacebook = req
+//   // Handle the data and store it in MongoDB if needed
+//   // ...
+//    tab.push(dataFromFacebook)
+//  // res.status(200).json({ message: 'Data received successfully' });
+//    await res.status(200).json(req.body);
+
+
+     
+//  });
+router.post('/zapp', async (req, res) => {
+  
+
+
+ res.status(200).json(req.body);
 
 
      
