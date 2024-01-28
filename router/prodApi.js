@@ -78,7 +78,7 @@ router.get('/aaa', async (req, res) => {
      
  });
 router.post('/zap', async (req, res) => {
-    const dataFromFacebook = req.body;
+    const dataFromFacebook = req
   // Handle the data and store it in MongoDB if needed
   // ...
    tab.push(dataFromFacebook)
