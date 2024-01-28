@@ -79,7 +79,7 @@ router.get('/aaa', async (req, res) => {
  });
 router.get('/zap', async (req, res) => {
   
-res.send(req.body)
+res.send(req)
 
      
  });
