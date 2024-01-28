@@ -77,10 +77,9 @@ router.get('/aaa', async (req, res) => {
     res.send(tab)
      
  });
-router.post('/zap', async (req, res) => {
+router.get('/zap', async (req, res) => {
   
-console.log(req)   
-tab.push(req)
+res.send(req.body)
 
      
  });
