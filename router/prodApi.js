@@ -4,6 +4,7 @@ const router = express.Router();
 const lodash=require('lodash')
 const prodSchema = require('../models/products.js')
 const userSchema = require('../models/user.js')
+const pubSchema = require('../models/pub.js')
 
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
@@ -72,16 +73,17 @@ router.get('/', async (req, res) => {
      
  });
 router.get('/aaa', async (req, res) => {
-  
-   
-    res.send(tab)
+    var pubs= await pubSchema.find()
+    res.send(pubs)
      
  });
 router.post('/zap', async (req, res) => {
-    const dataFromFacebook = await req.data
+    const dynamicData = req.body
+     var prod= await pubSchema.create({dynamicData})
+   
   // Handle the data and store it in MongoDB if needed
   // ...
-  await  tab.push(dataFromFacebook)
+ // await  tab.push(dataFromFacebook)
  // res.status(200).json({ message: 'Data received successfully' });
    await res.status(200).json(req.body);
 
