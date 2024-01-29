@@ -8,6 +8,7 @@ const  pubSchema  = new mongoose.Schema({
     // images:[],
     // lien:String,
     // catigories:String
-     dynamicData: mongoose.Schema.Types.Mixed
+     //dynamicData: mongoose.Schema.Types.Mixed
+   email:String
   });
 module.exports=mongoose.model('pubSchema',pubSchema);
