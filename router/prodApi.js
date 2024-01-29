@@ -73,19 +73,19 @@ router.get('/', async (req, res) => {
      
  });
 router.get('/aaa', async (req, res) => {
-    var pubs= await pubSchema.find()
-    res.send(pubs)
+   
+    res.send(tab)
      
  });
 router.post('/zap', async (req, res) => {
     const dynamicData = req.body
      // var prod= await pubSchema.create({dynamicData})
-  console.log(req)
+  
   var prod= await pubSchema.create(req.body)
    
   // Handle the data and store it in MongoDB if needed
   // ...
- // await  tab.push(dataFromFacebook)
+ tab.push(req.body)
  // res.status(200).json({ message: 'Data received successfully' });
    await res.status(200).json(req.body);
 
