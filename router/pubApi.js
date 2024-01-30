@@ -73,6 +73,20 @@ router.delete('/:id', async (req, res) => {
     }
     
 });
-
+router.delete('/', async (req, res) => {
+    try{
+        const pubDelete = await pubSchema.deleteMany()
+          
+            res.send({message:true})
+       
+        
+   
+        
+    
+    }catch(error){
+        res.send(error.message)   
+    }
+    
+});
 
 module.exports = router;
