@@ -14,6 +14,6 @@ const  pubSchema  = new mongoose.Schema({
    statut:String,
    isNew:Boolean,
    email:String,
-   project:SDtring
+   project:String
   });
 module.exports=mongoose.model('pubSchema',pubSchema);
