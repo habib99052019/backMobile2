@@ -29,14 +29,20 @@ const jwt=require('jsonwebtoken');
 console.log("declarer super pub")
 router.post('/', async (req, res) => {
   
-   var pub= await pubSchema.create( req.body)
+   var pubs= await pubSchema.create( req.body)
    res.send(pub)
     
 });
 router.get('/', async (req, res) => {
   
     var pub= await pubSchema.find()
-    res.send(pub)
+    res.send(pubs)
+     
+ });
+router.get('/length', async (req, res) => {
+  
+    var pubs= await pubSchema.find()
+    res.send({length:pubs.length})
      
  });
 router.get('/:id', async (req, res) => {
