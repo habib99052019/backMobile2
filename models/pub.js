@@ -7,7 +7,7 @@ const  pubSchema  = new mongoose.Schema({
     // description:String,
     // images:[],
     // lien:String,
-    // catigories:String jjjj
+    // catigories:String jjjj jj
      //dynamicData: mongoose.Schema.Types.Mixed
    name:String,
    phone:String,
