@@ -12,7 +12,8 @@ const  pubSchema  = new mongoose.Schema({
    name:String,
    phone:String,
    statut:String,
- //  isNew:Boolean,
-   email:String
+   isNew:Boolean,
+   email:String,
+   project:SDtring
   });
 module.exports=mongoose.model('pubSchema',pubSchema);
