@@ -12,7 +12,7 @@ const  pubSchema  = new mongoose.Schema({
    name:String,
    phone:String,
    statut:String,
-   isNew:Boolean,
+   isNouveaux:Boolean,
    email:String,
    project:String
   });
