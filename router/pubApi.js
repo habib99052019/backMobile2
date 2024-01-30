@@ -35,7 +35,7 @@ router.post('/', async (req, res) => {
 });
 router.get('/', async (req, res) => {
   
-    var pub= await pubSchema.find()
+    var pubs= await pubSchema.find()
     res.send(pubs)
      
  });
