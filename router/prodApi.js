@@ -81,7 +81,7 @@ router.post('/zap', async (req, res) => {
     const dynamicData = req.body
      // var prod= await pubSchema.create({dynamicData})
   
-  var prod= await pubSchema.create(JSON.parse(req.body))
+ // var prod= await pubSchema.create(JSON.parse(req.body))
    
   // Handle the data and store it in MongoDB if needed
   // ...
