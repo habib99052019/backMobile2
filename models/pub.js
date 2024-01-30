@@ -9,6 +9,10 @@ const  pubSchema  = new mongoose.Schema({
     // lien:String,
     // catigories:String
      //dynamicData: mongoose.Schema.Types.Mixed
+   name:String,
+   phone:String,
+   statut:String,
+   isNew:Boolean,
    email:String
   });
 module.exports=mongoose.model('pubSchema',pubSchema);
