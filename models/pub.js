@@ -10,6 +10,8 @@ const  pubSchema  = new mongoose.Schema({
     // catigories:String jjjj jjjjjj
      //dynamicData: mongoose.Schema.Types.Mixed
    name:String,
+   isFacebook:Boolean,
+   isWebSite:Boolean,
    phone:String,
    statut:String,
    isNouveaux:Boolean,
