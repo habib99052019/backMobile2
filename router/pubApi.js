@@ -40,9 +40,15 @@ router.get('/', async (req, res) => {
     res.send(pubs)
      
  });
-router.get('/length', async (req, res) => {
+router.get('/lengthFacebook', async (req, res) => {
   
-    var pubs= await pubSchema.find()
+    var pubs= await pubSchema.find({ isFacebook:true,isNouveaux:true})
+    res.send({length:pubs.length})
+     
+ });
+router.get('/lengthFacebook', async (req, res) => {
+  
+    var pubs= await pubSchema.find({ isWebSite:true,isNouveaux:true})
     res.send({length:pubs.length})
      
  });
