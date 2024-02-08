@@ -34,6 +34,7 @@ const user=require('./router/userApi')
 const prod=require('./router/prodApi.js')
 const pub=require('./router/pubApi.js')
 const cat=require('./router/catigorieApi.js')
+const noti=require('./router/notiApi.js')
 var admin = require("firebase-admin");
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -45,7 +46,7 @@ app.use('/user',user);
 app.use('/prod',prod);
 app.use('/cat',cat);
 app.use('/pub',pub);
-
+app.use('/not',noti);
 
 /*var serviceAccount = require("./serviceAccountKey.json");
 

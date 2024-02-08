@@ -6,6 +6,8 @@ const  userSchema  = new mongoose.Schema({
     fullName:String,
     email: String,
     pseudoName:String,
+    notis:[{ type: Schema.Types.ObjectId, ref:'notiSchema'}],
+    historique:[],
     login:String,
     password:String, 
     chat:[],
