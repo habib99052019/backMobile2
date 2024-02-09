@@ -16,6 +16,7 @@ const  userSchema  = new mongoose.Schema({
     active:Boolean,
     ville:String,
     city:String ,
+    likes:[],
     localistion:{
       lang:Number,
       long:Number
