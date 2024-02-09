@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const  notiSchema  = new mongoose.Schema({
    
-    details:String,
+    details:[],
      date:String,
     userPosterId:{ type: Schema.Types.ObjectId, ref:'userSchema'} // id user li habit l post
     
