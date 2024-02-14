@@ -35,7 +35,7 @@ const prod=require('./router/prodApi.js')
 const pub=require('./router/pubApi.js')
 const cat=require('./router/catigorieApi.js')
 const noti=require('./router/notiApi.js')
-const landing=require('./router/landingApi.js')
+const landing=require('./router/lindingApi.js')
 var admin = require("firebase-admin");
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
