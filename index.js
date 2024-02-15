@@ -36,6 +36,7 @@ const pub=require('./router/pubApi.js')
 const cat=require('./router/catigorieApi.js')
 const noti=require('./router/notiApi.js')
 const landing=require('./router/lindingApi.js')
+const emp=require('./router/empApi.js')
 var admin = require("firebase-admin");
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -49,7 +50,7 @@ app.use('/cat',cat);
 app.use('/pub',pub);
 app.use('/not',noti);
 app.use('/laniding',landing);
-
+app.use('/emp',emp);
 /*var serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
