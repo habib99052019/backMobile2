@@ -2,7 +2,7 @@
 const express = require('express')
 const router = express.Router();
 
-const employerSchema = require('../models/employerSchema.js')
+const employerSchema = require('../models/emp.js')
 
 router.post('/addemployer', async (req, res) => {
     try{
