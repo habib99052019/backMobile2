@@ -14,7 +14,15 @@ const  landingSchema  = new mongoose.Schema({
   img1:String,
   video1:String,
   image2:String,
-  option1:[]
+  option1:[],
+   objPosition:{
+      pos1:String,
+      value1:String,
+      pos2:String,
+      value2:String,
+       pos3:String,
+      value3:String,
+   }
   
     
   });
