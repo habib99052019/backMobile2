@@ -75,12 +75,7 @@ var employers=  await employerSchema.find()
 
 
 })
-router.get('/jj', async (req, res) => {
 
-res.send({
-    name:"gggg"
-})
-})
 
 router.post('/login', async (req, res) => {
    
