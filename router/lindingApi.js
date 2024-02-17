@@ -6,23 +6,38 @@ const landingSchema = require('../models/landing.js')
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 
-/*async function func(){
-    var cat1 = await landingSchema.create({
-      name:"Peugeot",
-      refs:["206","106","205","301"],
+async function func(){
+    var land1 = await landingSchema.create({
+      name:"String",
+  title1:"String",
+  numberTitle1:"String",
+  title2:"String",
+  numbertitle2:"String",
+  endTitle2:"String",
+  title1Section2:"String",
+  img1:"String",
+  video1:"String",
+  image2:"String",
+  option1:[],
+   objPosition:{
+      pos1:"String",
+      value1:"String",
+      pos2:"String",
+      value2:"String",
+       pos3:"String",
+      value3:"String"
+   
+  
+    
+  }
       
 
 
     })
-    var cat2 = await landingSchema.create( {
-        name:"Fiat",
-       refs:["Doblo","500X","Ducato"],
-  
-  
-      })
+   
 
-}*/
-// func()
+}
+ func()
 console.log("declarer super cat")
 router.post('/', async (req, res) => {
   
