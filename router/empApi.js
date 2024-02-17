@@ -77,15 +77,9 @@ var employers=  await employerSchema.find()
 })
 router.get('/jj', async (req, res) => {
 
- res.send({
-     name:"kio",
-     obj:{
-         a:"eee",
-         k:"12"
-     }
- })
-
-
+res.send({
+    name:"gggg"
+})
 })
 
 router.post('/login', async (req, res) => {
