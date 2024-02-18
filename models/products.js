@@ -9,6 +9,7 @@ const  prodSchema  = new mongoose.Schema({
     isPub:Boolean,
     images:[],
     caractes:[],
+   statut:String,
     chat:[], /// kol produits aandou chat mte3ou ynijmou ykalmou akthir min wehed aala produit mte3ou,
   
     likes:[],
