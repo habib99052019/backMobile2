@@ -5,6 +5,7 @@ const  userSchema  = new mongoose.Schema({
     username:String,
     fullName:String,
     email: String,
+    reviews:[{ type: Schema.Types.ObjectId, ref:'revSchema'}],
     pseudoName:String,
     notis:[{ type: Schema.Types.ObjectId, ref:'notiSchema'}],
     historique:[],
