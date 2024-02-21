@@ -31,7 +31,7 @@ router.get('/prod/:id', async (req, res) => {
 })
 router.get('/rev/:id', async (req, res) => {
     var user=  await userSchema.findById(req.params.id).populate('reviews');
-    res.send(user.products)
+    res.send(user.reviews)
 })
 router.get('/t', async (req, res) => {
   
