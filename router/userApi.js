@@ -22,11 +22,15 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-    var user=  await userSchema.findById(req.params.id).populate('products');
+    var user=  await userSchema.findById(req.params.id).populate('products').populate('reviews');
     res.send(user)
 })
 router.get('/prod/:id', async (req, res) => {
     var user=  await userSchema.findById(req.params.id).populate('products');
+    res.send(user.products)
+})
+router.get('/rev/:id', async (req, res) => {
+    var user=  await userSchema.findById(req.params.id).populate('reviews');
     res.send(user.products)
 })
 router.get('/t', async (req, res) => {
