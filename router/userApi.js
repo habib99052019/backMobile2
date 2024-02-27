@@ -6,6 +6,33 @@ const userSchema = require('../models/user.js')
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 var tab=[]
+// Import the Twilio module
+const twilio = require('twilio');
+
+// Replace these variables with your own values from your Twilio account
+const accountSid = 'ACdaa186277e590a766ed90e1caf475a7f';
+const authToken = '6965344998d46db268aa9a479f7d440e';
+const twilioPhoneNumber = '( +216 )52028532';
+const recipientPhoneNumber = '( +216 )52560071'; // Replace with the recipient's phone number
+
+// Create a Twilio client
+const client = new twilio(accountSid, authToken);
+async function func(){
+// Send an SMS message
+client.messages
+  .create({
+    body: 'Hello from Node.js and Twilio!', // Message text
+    from: twilioPhoneNumber, // Your Twilio phone number
+    to: recipientPhoneNumber, // Recipient's phone number
+  })
+  .then((message) => {
+    console.log('Message sent successfully:', message.sid);
+  })
+  .catch((error) => {
+    console.error('Error sending message:', error);
+  });
+}
+func()
 // async function func(){
 //     var user = await userSchema.find()
 //     console.log(user)
