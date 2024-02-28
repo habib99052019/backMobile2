@@ -13,7 +13,7 @@ const twilio = require('twilio');
 const accountSid = 'ACcf5c740f20c39ae33fddbd3915fec6c9';
 const authToken = '2f398191ab0674feb4739fd94db75bd8';
 const twilioPhoneNumber = '+16206850366';
-const recipientPhoneNumber = '+21652560071'; // Replace with the recipient's phone number
+const recipientPhoneNumber = '+21652028532'; // Replace with the recipient's phone number
 
 // Create a Twilio client
 const client = new twilio(accountSid, authToken);
