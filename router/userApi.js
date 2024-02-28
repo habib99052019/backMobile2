@@ -11,7 +11,7 @@ const twilio = require('twilio');
 
 // Replace these variables with your own values from your Twilio account
 const accountSid = 'ACcf5c740f20c39ae33fddbd3915fec6c9';
-const authToken = '2f398191ab0674feb4739fd94db75bd8';
+const authToken = '35477a0de7f2ebbd468396a39e151349';
 const twilioPhoneNumber = '+16206850366';
 const recipientPhoneNumber = '+21652028532'; // Replace with the recipient's phone number
 
