@@ -14,7 +14,7 @@ const accountSid = 'ACcf5c740f20c39ae33fddbd3915fec6c9';
 const authToken = '35477a0de7f2ebbd468396a39e151349';
 
 const twilioPhoneNumber = '+16206850366';
-const recipientPhoneNumber = '+21652307723'; // Replace with the recipient's phone number
+const recipientPhoneNumber = '+21650560071'; // Replace with the recipient's phone number
 
 // Create a Twilio client
 const client = new twilio(accountSid, authToken);
