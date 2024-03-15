@@ -21,4 +21,4 @@ const chatSchema  = new mongoose.Schema({
   statut:Boolean
     
   });
-module.exports=mongoose.model('chatSchema',employeSchema);
+module.exports=mongoose.model('chatSchema',chatSchema);
