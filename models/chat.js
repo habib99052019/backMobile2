@@ -3,22 +3,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const chatSchema  = new mongoose.Schema({
-    name:String,
-    lastName:String,
-    pseudoName:String,
-    login:String,
-    password:String,
-    phone:String,
-    email:String,
-    role:String,
-    stablme:String,
-    profil:String,
-    planing:[],
-   salaire:String,
-  Absence:[],
-  nombreJourAb:Number,
-  salaireNumber:Number,
-  statut:Boolean
+    userReceiv: {
+            usid: String,
+            username: String
+        },
+        userSend: {
+            usid: String,
+            username: String
+        },
+        product: {product object},
+        msgs: []
     
   });
 module.exports=mongoose.model('chatSchema',chatSchema);
