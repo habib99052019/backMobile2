@@ -11,7 +11,7 @@ const chatSchema  = new mongoose.Schema({
             usid: String,
             username: String
         },
-        product: {product object},
+        product: { type: Schema.Types.ObjectId, ref:'prodSchema'},
         msgs: []
     
   });
