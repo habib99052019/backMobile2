@@ -33,6 +33,7 @@ app.use(express.urlencoded({ limit: '100mb', extended: false, parameterLimit: 50
 const user=require('./router/userApi')
 const prod=require('./router/prodApi.js')
 const pub=require('./router/pubApi.js')
+const chat=require('./router/chatApi.js')
 const cat=require('./router/catigorieApi.js')
 const noti=require('./router/notiApi.js')
 const landing=require('./router/lindingApi.js')
@@ -53,6 +54,7 @@ app.use('/not',noti);
 app.use('/laniding',landing);
 app.use('/emp',emp);
 app.use('/rev',rev);
+app.use('/chat',chat);
 /*var serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
