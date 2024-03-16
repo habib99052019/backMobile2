@@ -66,7 +66,7 @@ router.get('/', async (req, res) => {
 //  });
 router.get('/:id', async (req, res) => {
   
-    var chat= await chatSchema.findById(req.params.id)
+    var chat= await chatSchema.findById(req.params.id).populate('product')
     res.send(chat)
      
  });
