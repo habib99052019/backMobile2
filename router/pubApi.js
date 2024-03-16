@@ -38,6 +38,18 @@ pubs.dateLead=Date().slice(0,21)
 });
 router.get('/', async (req, res) => {
   
+    var pubs= await pubSchema.find({isNouveaux:true})
+    res.send(pubs)
+     
+ });
+router.get('/nonNouveaux', async (req, res) => {
+  
+    var pubs= await pubSchema.find({isNouveaux:false})
+    res.send(pubs)
+     
+ });
+router.get('/all', async (req, res) => {
+  
     var pubs= await pubSchema.find()
     res.send(pubs)
      
