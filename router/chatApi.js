@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 });
 router.get('/', async (req, res) => {
   
-    var chats= await chatSchema.find()
+    var chats= await chatSchema.find().populate('product')
     res.send(chats)
      
  });
