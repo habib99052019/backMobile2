@@ -30,7 +30,9 @@ console.log("declarer super pub")
 router.post('/', async (req, res) => {
   console.log(req.body)
    var pubs= await pubSchema.create(req.body)
-     await res.status(200).json(req.body);
+pubs.dateLead=Date().slice(0,21)
+    await  pubs.save()
+     await res.status(200).json({message:true});
 
     
 });
