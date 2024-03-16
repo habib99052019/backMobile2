@@ -9,7 +9,9 @@ const  pubSchema  = new mongoose.Schema({
     // lien:String,
     // catigories:String jjjj jjjjjj;;
      //dynamicData: mongoose.Schema.Types.Mixed
+   dateLead:String,
    name:String,
+   employer:String,
    isFacebook:Boolean,
    isWebSite:Boolean,
    phone:String,
