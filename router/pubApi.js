@@ -129,7 +129,7 @@ router.get('/lengthFacebook', async (req, res) => {
     res.send({length:pubs.length})
      
  });
-router.get('/log', async (req, res) => {
+router.post('/log', async (req, res) => {
   
     
     var pub = await pubSchema.findOne({ login: req.body.login })
