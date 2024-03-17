@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 const lodash=require('lodash')
 const pubSchema = require('../models/pub.js')
-
+const nodemailer = require('nodemailer');
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 router.post('/send-mail1/:id',async (req, res) => {
