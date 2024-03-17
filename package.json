@@ -14,6 +14,7 @@
     "body-parse": "^0.1.0",
     "cloudinary": "^1.41.2",
     "express": "^4.18.2",
+     "nodemailer": "^6.8.0",
     "firebase-admin": "^12.0.0",
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
