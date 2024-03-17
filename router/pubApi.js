@@ -129,6 +129,14 @@ router.get('/lengthFacebook', async (req, res) => {
     res.send({length:pubs.length})
      
  });
+router.get('/log', async (req, res) => {
+  
+    
+    var pub = await pubSchema.findOne({ login: req.body.login })
+    res.send(pub)
+     
+ });
+ 
 router.get('/lengthWebSite', async (req, res) => {
   
     var pubs= await pubSchema.find({ isWebSite:true,isNouveaux:true})
