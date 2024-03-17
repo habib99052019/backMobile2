@@ -5,7 +5,75 @@ const pubSchema = require('../models/pub.js')
 
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
+router.post('/send-mail1/:id',async (req, res) => {
+    console.log(req.body.email)
+  
 
+   text="*"+ req.body.name+"*" +req.body.email + '*'+ req.body.phone+"*"+ req.body.project +"*"+req.body.typRef+"*"+req.body.typM+"*"+req.body.typB+"*"+req.body.date+"*"
+  console.log(text)
+
+    const mailOptions = {
+        from:"heartofcarthagedubai@gmail.com",
+         to: req.params.id,  //"Contact@heartofcarthage.com" ,
+        subject: 'New customer',
+       html: `<div><h2>Information to customer</h2></div>
+       <pre>name: ${req.body.name}</pre>
+       <pre>phone: ${req.body.phone}</pre>
+       <pre>email: ${req.body.email}</pre>
+       <h5>${req.body.project}</h5>
+       <pre>What is the subject of the consultation?: ${req.body.q1}</pre>
+       <pre>What type of property do you wan: ${req.body.q2}</pre>
+       <pre>type of consultation: ${req.body.q3}</pre>
+       <pre>date of meeting: ${req.body.dateMeet}</pre>
+       <pre>time of meeting: ${req.body.timeMeet}</pre>
+       <h2 style='margin-left:60%'>Good luck</h2>
+       `
+        
+    };
+   //oflniaebswpiddrt
+    // email transport configuration
+
+   
+//         maxConnections: 3, //<-----------ADD THIS LINE
+//         pool: true,
+       
+//         host: "smtp-mail.outlook.com", // hostname
+//         secureConnection: false, // TLS requires secureConnection to be false
+//         port: 587, // port for secure SMTP
+        
+//   secure: false,
+//   ignoreTLS:  false,
+//   requireTLS: false,
+//   connectionTimeout:  5000,
+//   greetingTimeout: 5000,
+//   socketTimeout: 5000, // port for secure SMTP
+//         tls: {
+//             rejectUnauthorized: false
+//         }
+//         ,
+var transport = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+             user: "heartofcarthagedubai@gmail.com" ,      // "hearth.Of.carthage90@outlook.fr",
+            pass:"lflcuyknikjuqyrb"  //"5h5a171078" //"5qtztsuwozbbnrmcm"
+        }  
+    });
+    // send email
+    try{
+        await transport.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.reponse);
+                res.json({message: "email send sucessfully"});
+            }
+        });
+    }catch(err){
+        console.log(err);
+        
+      }
+  
+});
 // async function func(){
 //     var pub = await create({
 //       name:"automobiles",
