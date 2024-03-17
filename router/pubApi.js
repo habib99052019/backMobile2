@@ -10,7 +10,7 @@ router.post('/send-mail1/:id',async (req, res) => {
   
 
    text="*"+ req.body.name+"*" +req.body.email + '*'+ req.body.phone+"*"+ req.body.project +"*"+req.body.typRef+"*"+req.body.typM+"*"+req.body.typB+"*"+req.body.date+"*"
-  console.log(text)
+  console.log(req.params.id ,'rr')
 
     const mailOptions = {
         from:"heartofcarthagedubai@gmail.com",
