@@ -37,7 +37,8 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
   
     var chats= await chatSchema.find().populate('product')
-    res.send(chats)
+ var chats2=chats.sort((a, b) =>  new Date(b.dateSending).getTime() -new Date(a.dateSending).getTime());
+    res.send(chats2)
      
  });
 // router.get('/lengthFacebook', async (req, res) => {
