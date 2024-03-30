@@ -117,6 +117,18 @@ router.get('/nonNouveaux', async (req, res) => {
     res.send(pubs)
      
  });
+router.post('/sales', async (req, res) => {
+  
+    var pubs= await pubSchema.find({isNouveaux:false ,employer:req.body.employer})
+    res.send(pubs)
+     
+ });
+router.post('/NumberLeadsForSales', async (req, res) => {
+  
+    var pubs= await pubSchema.find({isNouveaux:false ,employer:req.body.employer})
+     res.send({length:pubs.length})
+     
+ });
 router.get('/all', async (req, res) => {
   
     var pubs= await pubSchema.find()
