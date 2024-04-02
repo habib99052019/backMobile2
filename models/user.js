@@ -18,6 +18,7 @@ const  userSchema  = new mongoose.Schema({
     ville:String,
     city:String ,
     likes:[],
+    appel:[],
     localistion:{
       lang:Number,
       long:Number
