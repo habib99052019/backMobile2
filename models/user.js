@@ -23,7 +23,8 @@ const  userSchema  = new mongoose.Schema({
       lang:Number,
       long:Number
 
-    }
+    },
+    detailsAppel:[]
    
   });
 module.exports=mongoose.model('userSchema',userSchema);
