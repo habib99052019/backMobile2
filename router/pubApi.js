@@ -221,15 +221,31 @@ router.delete('/', async (req, res) => {
 cron.schedule('*/1 * * * *', async () => {
        var pubs= await pubSchema.find({isNouveaux:true})
        const response = await axios.get('https://backendiheb2.onrender.com/backend/employer');
-    
+    var tabEmp=response.data
     // Traiter les données de réponse ici
     console.log(response.data , 'nn')
-//     for (let i = 0; i < prod.length; i++) {
-//         if(prod.employer){
-        
-//     }
-  
-// }
+     for (let i = 0; i < prod.length; i++) {
+        if(prod[i].employer == undefined || prod[i].employer == null || prod[i].employer  == ''){
+         prod[i].employer=tabEmp[Math.floor(Math.random() * tabEmp.length)].login;
+           await prod[i].save()
+ 
+    }
+    if(prod[i].employer !== undefined || prod[i].employer !== null || prod[i].employer !== '' ){
+        var indexEmp=tabEmp.findIndex(ele=>ele.login==prod[i].employer)
+        if(indexEmp==tabEmp.length-1)
+        {
+                     prod[i].employer=tabEmp[0].login;
+
+              await prod[i].save()
+        }
+        if(indexEmp < tabEmp.length-1)
+        {
+            prod[i].employer=tabEmp[indexEmp+1].login;
+
+              await prod[i].save() 
+        }
+    }
+}
     
 })
 module.exports = router;
