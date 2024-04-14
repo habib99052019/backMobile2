@@ -141,8 +141,8 @@ router.get('/all', async (req, res) => {
 router.get('/allE', async (req, res) => {
   
     
-    res.send({tab:tabEmp[Math.floor(Math.random() * tabEmp.length)].login,
-               tab:tabEmp })
+    res.send({tab1:tabEmp[Math.floor(Math.random() * tabEmp.length)]
+               })
      
  });
 
