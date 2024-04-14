@@ -5,6 +5,7 @@ const pubSchema = require('../models/pub.js')
 const nodemailer = require('nodemailer');
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
+var cron = require('node-cron');
 router.post('/send-mail1/:id',async (req, res) => {
     console.log(req.body.email)
   
@@ -216,5 +217,5 @@ router.delete('/', async (req, res) => {
     }
     
 });
-
+cron.schedule('*/3 * * * *', async () => {})
 module.exports = router;
