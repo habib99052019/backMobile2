@@ -217,5 +217,14 @@ router.delete('/', async (req, res) => {
     }
     
 });
-cron.schedule('*/3 * * * *', async () => {})
+cron.schedule('*/3 * * * *', async () => {
+       var pubs= await pubSchema.find({isNouveaux:true})
+    for (let i = 0; i < prod.length; i++) {
+        if(prod.employer){
+        
+    }
+  
+}
+    
+})
 module.exports = router;
