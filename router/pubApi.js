@@ -219,7 +219,7 @@ router.delete('/', async (req, res) => {
     
 });
 cron.schedule('*/1 * * * *', async () => {
-       var pubs= await pubSchema.find({isNouveaux:true})
+       var prod= await pubSchema.find({isNouveaux:true})
        const response = await axios.get('https://backendiheb2.onrender.com/backend/employer');
     var tabEmp=response.data
     // Traiter les données de réponse ici
