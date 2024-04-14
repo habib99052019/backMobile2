@@ -6,6 +6,7 @@ const nodemailer = require('nodemailer');
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 var cron = require('node-cron');
+const axios = require('axios');
 router.post('/send-mail1/:id',async (req, res) => {
     console.log(req.body.email)
   
@@ -217,14 +218,18 @@ router.delete('/', async (req, res) => {
     }
     
 });
-cron.schedule('*/3 * * * *', async () => {
+cron.schedule('*/1 * * * *', async () => {
        var pubs= await pubSchema.find({isNouveaux:true})
-    for (let i = 0; i < prod.length; i++) {
-        if(prod.employer){
+       const response = await axios.get('https://backendiheb2.onrender.com/backend/employer');
+    
+    // Traiter les données de réponse ici
+    console.log(response.data , 'nn')
+//     for (let i = 0; i < prod.length; i++) {
+//         if(prod.employer){
         
-    }
+//     }
   
-}
+// }
     
 })
 module.exports = router;
