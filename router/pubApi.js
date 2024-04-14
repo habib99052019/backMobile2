@@ -7,6 +7,7 @@ const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 var cron = require('node-cron');
 const axios = require('axios');
+var tabEm=[]
 router.post('/send-mail1/:id',async (req, res) => {
     console.log(req.body.email)
   
@@ -137,6 +138,14 @@ router.get('/all', async (req, res) => {
     res.send(pubs)
      
  });
+router.get('/allE', async (req, res) => {
+  
+    
+    res.send({tab:tabEmp[Math.floor(Math.random() * tabEmp.length)].login,
+               tab:tabEmp })
+     
+ });
+
 router.get('/lengthFacebook', async (req, res) => {
   
     var pubs= await pubSchema.find({ isFacebook:true,isNouveaux:true})
@@ -221,7 +230,7 @@ router.delete('/', async (req, res) => {
 cron.schedule('*/1 * * * *', async () => {
        var prod= await pubSchema.find({isNouveaux:true})
        const response = await axios.get('https://backendiheb2.onrender.com/backend/employer');
-    var tabEmp=response.data
+     tabEmp=response.data
     // Traiter les données de réponse ici
     console.log(response.data , 'nn')
      for (let i = 0; i < prod.length; i++) {
