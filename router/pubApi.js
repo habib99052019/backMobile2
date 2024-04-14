@@ -203,6 +203,19 @@ router.put('/:id', async (req, res) => {
     }
     
 });
+router.put('creation/:id', async (req, res) => {
+    try{
+        var  pub = await pubSchema.findByIdAndUpdate(req.params.id, req.body, { new: true })
+ 
+        res.send(pub)
+   
+        
+    
+    }catch(error){
+        res.send(error.message)   
+    }
+    
+});
 router.delete('/:id', async (req, res) => {
     try{
         const pubDelete = await pubSchema.deleteOne({ _id: req.params.id }).then(async (group) => {
