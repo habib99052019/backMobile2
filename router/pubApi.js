@@ -227,20 +227,31 @@ router.delete('/', async (req, res) => {
     }
     
 });
+ async function func2(){
+     var prod= await pubSchema.find()
+     for (let i = 0; i < prod.length; i++) {
+        prod[i].employer =""
+         prod[i].isNouveaux=true   
+         await prod[i].save()
+     }
+    
+ }
+func2()
 cron.schedule('*/1 * * * *', async () => {
        var prod= await pubSchema.find({isNouveaux:true})
        const response = await axios.get('https://backendiheb2.onrender.com/backend/employer');
      tabEmp=response.data
     // Traiter les données de réponse ici
-    console.log(response.data , 'nn')
+   
      for (let i = 0; i < prod.length; i++) {
-        if(prod[i].employer == undefined || prod[i].employer == null || prod[i].employer  == ''){
+        if(prod[i].employer  == ''){
          prod[i].employer=tabEmp[Math.floor(Math.random() * tabEmp.length)].login;
            await prod[i].save()
  
     }
-    if(prod[i].employer !== undefined || prod[i].employer !== null || prod[i].employer !== '' ){
+    if(prod[i].employer !== '' ){
         var indexEmp=tabEmp.findIndex(ele=>ele.login==prod[i].employer)
+         console.log(indexEmp,"vv")
         if(indexEmp==tabEmp.length-1)
         {
                      prod[i].employer=tabEmp[0].login;
