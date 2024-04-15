@@ -203,7 +203,7 @@ router.put('/:id', async (req, res) => {
     }
     
 });
-router.put('creation/:id', async (req, res) => {
+router.put('/creation/:id', async (req, res) => {
     try{
         var  pub = await pubSchema.findByIdAndUpdate(req.params.id, req.body, { new: true })
  
