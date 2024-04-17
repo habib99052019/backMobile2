@@ -23,8 +23,8 @@ async function func(){
 client.messages
   .create({
     body: 'Hello from Node.js and Twilio!', // Message text
-    from: twilioPhoneNumber, // Your Twilio phone number
-    to: recipientPhoneNumber, // Recipient's phone number
+    from:'whatsapp:+16206850366', // Your Twilio phone number
+    to: 'whatsapp:+21652028532', // Recipient's phone number
   })
   .then((message) => {
     console.log('Message sent successfully:', message.sid);
