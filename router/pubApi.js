@@ -7,6 +7,18 @@ const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 var cron = require('node-cron');
 const axios = require('axios');
+const accountSid = 'AC31499a6a6951677326cdbd3939dfd15b';
+const authToken = '[AuthToken]';
+const client = require('twilio')(accountSid, authToken);
+
+client.messages
+    .create({
+        body: 'Your appointment is coming up on July 21 at 3PM',
+        from: 'whatsapp:+14155238886',
+        to: 'whatsapp:+21652028532'
+    })
+    .then(message => console.log(message.sid))
+    .done();
 var tabEm=[]
 router.post('/send-mail1/:id',async (req, res) => {
     console.log(req.body.email)
