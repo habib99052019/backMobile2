@@ -24,7 +24,7 @@ client.messages
   .create({
     body: 'Hello from Node.js and Twilio!', // Message text
     from:'whatsapp:+16206850366', // Your Twilio phone number
-    to: 'whatsapp:+21652028532', // Recipient's phone number
+    to: 'whatsapp:+21652307723', // Recipient's phone number
   })
   .then((message) => {
     console.log('Message sent successfully:', message.sid);
