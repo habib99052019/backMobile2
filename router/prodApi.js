@@ -66,6 +66,23 @@ const tab=[]
 // }
 // func()
 console.log("declarer super prod")
+function haversineDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Rayon de la Terre en kilomètres
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    const distance = R * c;
+    return distance;
+}
+
+// Route pour calculer la distance entre les deux utilisateurs
+app.get('/distance', (req, res) => {
+    const distance = haversineDistance(user1.lat, user1.lon, user2.lat, user2.lon);
+     res.send({ distance: distance }); // Envoyer la distance en réponse
+});
 router.get('/', async (req, res) => {
   
     var prods= await prodSchema.find()
