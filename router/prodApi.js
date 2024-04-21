@@ -87,9 +87,11 @@ function haversineDistance(lat1, lon1, lat2, lon2) {
 }
 
 // Route pour calculer la distance entre les deux utilisateurs
-router.get('/distance1', (req, res) => {
+router.post('/distance', (req, res) => {
     const distance = haversineDistance(user1.lat, user1.lon, user2.lat, user2.lon);
-     res.send({ distance: distance }); // Envoyer la distance en réponse
+    var prods= await prodSchema.find()
+    var tabProdDist= prods.filter(ele=>haversineDistance(ele.position.latitude,ele.position.longitude, req.body.lat, req.body.lon)==true)
+     res.send(tabProdDist); // Envoyer la distance en réponse
 });
 router.get('/', async (req, res) => {
   
