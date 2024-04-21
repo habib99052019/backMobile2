@@ -66,6 +66,9 @@ const tab=[]
 // }
 // func()
 console.log("declarer super prod")
+const user1 = { lat: 48.8566, lon: 2.3522 }; // Paris, France
+const user2 = { lat: 40.7128, lon: -74.0060 }; // New York, USA
+
 function haversineDistance(lat1, lon1, lat2, lon2) {
     const R = 6371; // Rayon de la Terre en kilomètres
     const dLat = (lat2 - lat1) * Math.PI / 180;
@@ -80,8 +83,8 @@ function haversineDistance(lat1, lon1, lat2, lon2) {
 
 // Route pour calculer la distance entre les deux utilisateurs
 router.get('/distance1', (req, res) => {
-   // const distance = haversineDistance(user1.lat, user1.lon, user2.lat, user2.lon);
-     res.send({ distance: "distance" }); // Envoyer la distance en réponse
+    const distance = haversineDistance(user1.lat, user1.lon, user2.lat, user2.lon);
+     res.send({ distance: distance }); // Envoyer la distance en réponse
 });
 router.get('/', async (req, res) => {
   
