@@ -78,7 +78,13 @@ function haversineDistance(lat1, lon1, lat2, lon2) {
               Math.sin(dLon/2) * Math.sin(dLon/2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
     const distance = R * c;
-    return distance;
+    if(distance <16){
+      return  false
+    }
+    else {
+       return true; 
+    }
+    
 }
 
 // Route pour calculer la distance entre les deux utilisateurs
