@@ -20,6 +20,7 @@ const accountSid = 'AC31499a6a6951677326cdbd3939dfd15b';
 //     .then(message => console.log(message.sid))
 //     .done();
 var tabEm=[]
+var tabNoveaux=[]
 router.post('/send-mail1/:id',async (req, res) => {
     console.log(req.body.email)
   
@@ -110,16 +111,30 @@ var transport = nodemailer.createTransport({
 // }
 // func()
 console.log("declarer super pub")
+// router.post('/', async (req, res) => {
+//   console.log(req.body)
+//    var pubs= await pubSchema.create(req.body)
+// pubs.dateLead=Date().slice(0,21)
+//   pubs.employer=""
+//     await  pubs.save()
+//      await res.status(200).json({message:true});
+
+    
+// });
 router.post('/', async (req, res) => {
   console.log(req.body)
-   var pubs= await pubSchema.create(req.body)
-pubs.dateLead=Date().slice(0,21)
-  pubs.employer=""
-    await  pubs.save()
+tabNoveaux.push({name:req.body.name,
+                 email:req.body.email,
+                 phone:req.body.phone,
+                 project:req.body.project})
+
      await res.status(200).json({message:true});
 
     
 });
+router.get('/pro', async (req, res) => {
+    res.send(tabNoveaux)
+})
 router.get('/', async (req, res) => {
   
     var pubs= await pubSchema.find({isNouveaux:true})
