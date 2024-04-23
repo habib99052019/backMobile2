@@ -138,7 +138,8 @@ router.get('/pro', async (req, res) => {
 router.get('/', async (req, res) => {
   
     var pubs= await pubSchema.find()
-    var tab=tab[pubs[0]]
+    var tab=[]
+    tab.push(pubs[0])
     
     for (let i = 0; i < pubs.length; i++) {
     let user = pubs[i];
