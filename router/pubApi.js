@@ -137,7 +137,7 @@ router.get('/pro', async (req, res) => {
 })
 router.get('/', async (req, res) => {
   
-    var pubs= await pubSchema.find({isNouveaux:true})
+    var pubs= await pubSchema.find()
     res.send(pubs)
      
  });
