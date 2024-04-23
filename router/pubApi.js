@@ -138,7 +138,16 @@ router.get('/pro', async (req, res) => {
 router.get('/', async (req, res) => {
   
     var pubs= await pubSchema.find()
-    res.send(pubs)
+    var tab=[]
+    for (let i = 0; i < pubs.length; i++) {
+    let user = pubs[i];
+    // Si l'email de l'utilisateur n'existe pas encore dans la Map, l'ajouter
+    if (tab.filter(ele=>ele.email==user.email).length==0) {
+        tab.push(user)
+    }
+}
+    
+    res.send(tab)
      
  });
 router.get('/nonNouveaux', async (req, res) => {
