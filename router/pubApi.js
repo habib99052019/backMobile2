@@ -111,27 +111,27 @@ var transport = nodemailer.createTransport({
 // }
 // func()
 console.log("declarer super pub")
-// router.post('/', async (req, res) => {
-//   console.log(req.body)
-//    var pubs= await pubSchema.create(req.body)
-// pubs.dateLead=Date().slice(0,21)
-//   pubs.employer=""
-//     await  pubs.save()
-//      await res.status(200).json({message:true});
-
-    
-// });
 router.post('/', async (req, res) => {
   console.log(req.body)
-tabNoveaux.push({name:req.body.name,
-                 email:req.body.email,
-                 phone:req.body.phone,
-                 project:req.body.project})
-
+   var pubs= await pubSchema.create(req.body)
+pubs.dateLead=Date().slice(0,21)
+  pubs.employer=""
+    await  pubs.save()
      await res.status(200).json({message:true});
 
     
 });
+// router.post('/', async (req, res) => {
+//   console.log(req.body)
+// tabNoveaux.push({name:req.body.name,
+//                  email:req.body.email,
+//                  phone:req.body.phone,
+//                  project:req.body.project})
+
+//      await res.status(200).json({message:true});
+
+    
+// });
 router.get('/pro', async (req, res) => {
     res.send(tabNoveaux)
 })
