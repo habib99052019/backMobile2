@@ -7,10 +7,10 @@ const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 var cron = require('node-cron');
 const axios = require('axios');
-// const accountSid = 'AC2f6190631316bc5691205d1f5917d48d';
-// const authToken = 'bf23ac9b0565ec7271444add44024f4b'
-const accountSid = 'AC31499a6a6951677326cdbd3939dfd15b';
-const authToken = '1ed3d1d916e52612a8272efa8906bd6b'
+const accountSid = 'AC2f6190631316bc5691205d1f5917d48d';
+const authToken = 'bf23ac9b0565ec7271444add44024f4b'
+// const accountSid = 'AC31499a6a6951677326cdbd3939dfd15b';
+// const authToken = '1ed3d1d916e52612a8272efa8906bd6b'
 const client = require('twilio')(accountSid, authToken);
 // async function rr12(){
 //     var pubs= await pubSchema.find()
@@ -25,14 +25,16 @@ const client = require('twilio')(accountSid, authToken);
 // rr12()
 async function sendWhatsAppMessage(to, message) {
   try {
-    const response = await client.messages.create({
-      body: message,
-      from: 'whatsapp:+14792822034', // Your Twilio Sandbox Number +12512206076 +14155238886
-      to: `whatsapp:${to}`,
-    });
-    console.log(`Message sent to ${to}: ${response.sid}`);
-  } catch (error) {
-    console.error(`Failed to send message: ${error}`);
+
+
+client.messages
+    .create({
+        body: 'Your appointment is coming up on July 21 at 3PM',
+        from: 'whatsapp:+14155238886',
+        to: 'whatsapp:+21652028532'
+    })
+    .then(message => console.log(message.sid))
+    .done();
   }
 }
 
