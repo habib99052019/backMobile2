@@ -25,7 +25,7 @@ async function sendWhatsAppMessage(to, message) {
   try {
     const response = await client.messages.create({
       body: message,
-      from: '+14155238886', // Your Twilio Sandbox Number +12512206076 +14155238886
+      from: '+12512206076', // Your Twilio Sandbox Number +12512206076 +14155238886
       to: `${to}`,
     });
     console.log(`Message sent to ${to}: ${response.sid}`);
