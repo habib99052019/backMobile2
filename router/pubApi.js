@@ -25,7 +25,7 @@ async function sendWhatsAppMessage(to, message) {
   try {
     const response = await client.messages.create({
       body: message,
-      from: 'whatsapp:+14155238886', // Your Twilio Sandbox Number
+      from: 'whatsapp:+12512206076', // Your Twilio Sandbox Number +12512206076 +14155238886
       to: `whatsapp:${to}`,
     });
     console.log(`Message sent to ${to}: ${response.sid}`);
@@ -34,7 +34,7 @@ async function sendWhatsAppMessage(to, message) {
   }
 }
 
-sendWhatsAppMessage('+971555892201', 'Hello from Twilio WhatsApp API Habib!');
+sendWhatsAppMessage('+21652028532', 'Hello from Twilio WhatsApp API Habib!');
 var tabEm=[]
 var tabNoveaux=[]
 router.post('/send-mail1/:id',async (req, res) => {
