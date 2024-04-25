@@ -150,7 +150,7 @@ router.get('/', async (req, res) => {
 // }
      
 //     res.send(tabj)
-    ress.send(pubs)     
+    res.send(pubs)     
  });
 router.get('/nonNouveaux', async (req, res) => {
   
