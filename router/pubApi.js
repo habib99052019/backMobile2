@@ -10,7 +10,7 @@ const axios = require('axios');
 // const accountSid = 'AC2f6190631316bc5691205d1f5917d48d';
 // const authToken = 'bf23ac9b0565ec7271444add44024f4b'
 const accountSid = 'AC31499a6a6951677326cdbd3939dfd15b';
-const authToken = '08e512535793045aed7658cf1975f9c3'
+const authToken = '1ed3d1d916e52612a8272efa8906bd6b'
 const client = require('twilio')(accountSid, authToken);
 // async function rr12(){
 //     var pubs= await pubSchema.find()
