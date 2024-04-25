@@ -7,10 +7,10 @@ const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 var cron = require('node-cron');
 const axios = require('axios');
-const accountSid = 'AC2f6190631316bc5691205d1f5917d48d';
-const authToken = 'bf23ac9b0565ec7271444add44024f4b'
+const accountSid = 'ACc75095edba8992b4e0c2f698a0656cdf';
+const authToken = '0b843539117bb3fe1cef25304385feab'
 // const accountSid = 'AC31499a6a6951677326cdbd3939dfd15b';
-// const authToken = '1ed3d1d916e52612a8272efa8906bd6b'
+// const authToken = '0b843539117bb3fe1cef25304385feab'
 const client = require('twilio')(accountSid, authToken);
 // async function rr12(){
 //     var pubs= await pubSchema.find()
