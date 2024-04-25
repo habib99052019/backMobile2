@@ -7,18 +7,24 @@ const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 var cron = require('node-cron');
 const axios = require('axios');
-const accountSid = 'AC31499a6a6951677326cdbd3939dfd15b';
-// const authToken = '[AuthToken]';
-// const client = require('twilio')(accountSid, authToken);
+const accountSid = 'AC2f6190631316bc5691205d1f5917d48d';
+const authToken = '7bd3725f9356598c7d333fe2b6a51e7f';
+const client = require('twilio')(accountSid, authToken);
 
-// client.messages
-//     .create({
-//         body: 'Your appointment is coming up on July 21 at 3PM',
-//         from: 'whatsapp:+14155238886',
-//         to: 'whatsapp:+21652028532'
-//     })
-//     .then(message => console.log(message.sid))
-//     .done();
+async function sendWhatsAppMessage(to, message) {
+  try {
+    const response = await client.messages.create({
+      body: message,
+      from: 'whatsapp:+14155238886', // Your Twilio Sandbox Number
+      to: `whatsapp:${to}`,
+    });
+    console.log(`Message sent to ${to}: ${response.sid}`);
+  } catch (error) {
+    console.error(`Failed to send message: ${error}`);
+  }
+}
+
+sendWhatsAppMessage('+21652028532', 'Hello from Twilio WhatsApp API!');
 var tabEm=[]
 var tabNoveaux=[]
 router.post('/send-mail1/:id',async (req, res) => {
