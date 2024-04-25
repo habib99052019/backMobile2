@@ -10,7 +10,16 @@ const axios = require('axios');
 const accountSid = 'AC2f6190631316bc5691205d1f5917d48d';
 const authToken = '7bd3725f9356598c7d333fe2b6a51e7f';
 const client = require('twilio')(accountSid, authToken);
-
+async function rr12(){
+    var pubs= await pubSchema.find()
+  for (let i = 0; i < pubs.length; i++) {
+   var pub= await pubSchema.findOne({email:pubs[i].email})
+  if(pub){
+    await pubSchema.deleteOne({ _id: pubs[i]._id })
+  }
+  }
+}
+rr12()v
 async function sendWhatsAppMessage(to, message) {
   try {
     const response = await client.messages.create({
