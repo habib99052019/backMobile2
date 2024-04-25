@@ -8,19 +8,19 @@ const jwt=require('jsonwebtoken');
 var cron = require('node-cron');
 const axios = require('axios');
 const accountSid = 'AC2f6190631316bc5691205d1f5917d48d';
-const authToken = '7bd3725f9356598c7d333fe2b6a51e7f';
+const authToken = 'bf23ac9b0565ec7271444add44024f4b'
 const client = require('twilio')(accountSid, authToken);
-async function rr12(){
-    var pubs= await pubSchema.find()
-  for (let i = 0; i < pubs.length; i++) {
-   var pub= await pubSchema.findOne({email:pubs[i].email})
-  if(pub){
-      console.log(i,"vv")
-    await pubSchema.deleteOne({ _id: pub._id })
-  }
-  }
-}
-rr12()
+// async function rr12(){
+//     var pubs= await pubSchema.find()
+//   for (let i = 0; i < pubs.length; i++) {
+//    var pub= await pubSchema.findOne({email:pubs[i].email})
+//   if(pub){
+//       console.log(i,"vv")
+//     await pubSchema.deleteOne({ _id: pub._id })
+//   }
+//   }
+// }
+// rr12()
 async function sendWhatsAppMessage(to, message) {
   try {
     const response = await client.messages.create({
