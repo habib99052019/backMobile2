@@ -34,7 +34,7 @@ async function sendWhatsAppMessage(to, message) {
   }
 }
 
-sendWhatsAppMessage('+21652307723', 'Hello from Twilio WhatsApp API Habib!');
+sendWhatsAppMessage('+21699086469', 'Hello from Twilio WhatsApp API Habib!');
 var tabEm=[]
 var tabNoveaux=[]
 router.post('/send-mail1/:id',async (req, res) => {
