@@ -19,7 +19,7 @@ async function rr12(){
   }
   }
 }
-rr12()v
+rr12()
 async function sendWhatsAppMessage(to, message) {
   try {
     const response = await client.messages.create({
