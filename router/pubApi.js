@@ -314,7 +314,7 @@ cron.schedule('*/1 * * * *', async () => {
     }
     if(prod[i].employer !== '' ){
         var indexEmp=tabEmp.findIndex(ele=>ele.login==prod[i].employer)
-         console.log(indexEmp,"vv")
+         // console.log(indexEmp,"vv")
         if(indexEmp==tabEmp.length-1)
         {
                      prod[i].employer=tabEmp[0].login;
