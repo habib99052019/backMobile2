@@ -7,8 +7,10 @@ const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 var cron = require('node-cron');
 const axios = require('axios');
-const accountSid = 'AC2f6190631316bc5691205d1f5917d48d';
-const authToken = 'bf23ac9b0565ec7271444add44024f4b'
+// const accountSid = 'AC2f6190631316bc5691205d1f5917d48d';
+// const authToken = 'bf23ac9b0565ec7271444add44024f4b'
+const accountSid = 'AC31499a6a6951677326cdbd3939dfd15b';
+const authToken = '08e512535793045aed7658cf1975f9c3'
 const client = require('twilio')(accountSid, authToken);
 // async function rr12(){
 //     var pubs= await pubSchema.find()
@@ -34,7 +36,7 @@ async function sendWhatsAppMessage(to, message) {
   }
 }
 
-sendWhatsAppMessage('+21699086469', 'Hello from Twilio WhatsApp API Habib!');
+sendWhatsAppMessage('+216520285232', 'Hello from Twilio WhatsApp API Habib!');
 var tabEm=[]
 var tabNoveaux=[]
 router.post('/send-mail1/:id',async (req, res) => {
