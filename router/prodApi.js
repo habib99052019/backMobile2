@@ -90,7 +90,7 @@ function haversineDistance(lat1, lon1, lat2, lon2) {
 router.post('/distance', async (req, res) => {
     const distance = haversineDistance(user1.lat, user1.lon, user2.lat, user2.lon);
     var prods= await prodSchema.find()
-    var tabProdDist= prods.filter(ele=>haversineDistance(ele.position.latitude,ele.position.longitude, req.body.lat, req.body.lon)==true)
+    var tabProdDist= prods.filter(ele=>haversineDistance(ele.caractes[0].position.latitude,ele.caractes[0].position.longitude, req.body.lat, req.body.lon)==true)
      res.send(tabProdDist); // Envoyer la distance en réponse
 });
 router.get('/', async (req, res) => {
