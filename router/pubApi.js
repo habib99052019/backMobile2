@@ -36,7 +36,7 @@ client.messages
 //   }
 // }
 
-sendWhatsAppMessage('+21652028532', 'Hello from Twilio WhatsApp API!');
+// sendWhatsAppMessage('+21652028532', 'Hello from Twilio WhatsApp API!');
 // async function rr12(){
 //     var pubs= await pubSchema.find()
 //   for (let i = 0; i < pubs.length; i++) {
