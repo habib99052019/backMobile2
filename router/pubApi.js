@@ -23,9 +23,6 @@ const client = require('twilio')(accountSid, authToken);
 //   }
 // }
 // rr12()
-async function sendWhatsAppMessage(to, message) {
-  try {
-
 
 client.messages
     .create({
@@ -35,10 +32,6 @@ client.messages
     })
     .then(message => console.log(message.sid))
     .done();
-  }
-}
-
-sendWhatsAppMessage('+21652028532', 'Hello from Twilio WhatsApp API Habib!');
 var tabEm=[]
 var tabNoveaux=[]
 router.post('/send-mail1/:id',async (req, res) => {
