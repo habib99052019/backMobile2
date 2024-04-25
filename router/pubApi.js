@@ -15,7 +15,8 @@ async function rr12(){
   for (let i = 0; i < pubs.length; i++) {
    var pub= await pubSchema.findOne({email:pubs[i].email})
   if(pub){
-    await pubSchema.deleteOne({ _id: pubs[i]._id })
+      console.log(i,"vv")
+    await pubSchema.deleteOne({ _id: pub._id })
   }
   }
 }
