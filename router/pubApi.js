@@ -146,6 +146,13 @@ router.post('/sable', async (req, res) => {
 
     
 });
+router.get('/sable', async (req, res) => {
+
+
+     await res.status(200).json({message:true});
+
+    
+});
 router.get('/pro', async (req, res) => {
     res.send(tabNoveaux)
 })
