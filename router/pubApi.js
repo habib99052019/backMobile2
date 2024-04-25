@@ -139,17 +139,13 @@ pubs.dateLead=Date().slice(0,21)
 
     
 });
-// router.post('/', async (req, res) => {
-//   console.log(req.body)
-// tabNoveaux.push({name:req.body.name,
-//                  email:req.body.email,
-//                  phone:req.body.phone,
-//                  project:req.body.project})
+router.post('/sable', async (req, res) => {
 
-//      await res.status(200).json({message:true});
+
+     await res.status(200).json({message:true});
 
     
-// });
+});
 router.get('/pro', async (req, res) => {
     res.send(tabNoveaux)
 })
