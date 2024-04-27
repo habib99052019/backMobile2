@@ -7,11 +7,11 @@ const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 var cron = require('node-cron');
 const axios = require('axios');
-const express = require('express');
+// const express = require('express');
 // const axios = require('axios');
 const cheerio = require('cheerio');
 
-const app = express();
+// const app = express();
 
 // Endpoint pour le scraping
 router.get('/scrape', async (req, res) => {
