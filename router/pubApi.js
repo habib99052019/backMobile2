@@ -55,21 +55,21 @@ router.get('/scrape', async (req, res) => {
 // Port pour le serveur Express
 
 
-const twilio = require('twilio');
-// const accountSid = 'ACc75095edba8992b4e0c2f698a0656cdf';
-// const authToken = '0b843539117bb3fe1cef25304385feab'
-const accountSid = 'ACc75095edba8992b4e0c2f698a0656cdf'    ///'ACc75095edba8992b4e0c2f698a0656cdf';
-const authToken = '1b0ea11e09744ae508c91c7deca52774';
-const client = require('twilio')(accountSid, authToken);
+// const twilio = require('twilio');
+// // const accountSid = 'ACc75095edba8992b4e0c2f698a0656cdf';
+// // const authToken = '0b843539117bb3fe1cef25304385feab'
+// const accountSid = 'ACc75095edba8992b4e0c2f698a0656cdf'    ///'ACc75095edba8992b4e0c2f698a0656cdf';
+// const authToken = '1b0ea11e09744ae508c91c7deca52774';
+// const client = require('twilio')(accountSid, authToken);
 
-client.messages
-    .create({
-        body: 'hy habib',
-        from: 'whatsapp:+14155238886',//+14155238886
-        to: 'whatsapp:+21652028532'
-    })
-    .then(message => console.log(message.sid))
-    .done();
+// client.messages
+//     .create({
+//         body: 'hy habib',
+//         from: 'whatsapp:+14155238886',//+14155238886
+//         to: 'whatsapp:+21652028532'
+//     })
+//     .then(message => console.log(message.sid))
+//     .done();
 // const client = new twilio(accountSid, authToken)
 // async function sendWhatsAppMessage(to, message) {
 //   try {
