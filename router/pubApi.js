@@ -27,13 +27,15 @@ router.get('/scrape', async (req, res) => {
 
         // Tableau pour stocker les détails des produits
         const products = [];
-
+         const productHtmls = [];
+          const productLis = $('._357a9937');
         // Récupérer les éléments qui contiennent les informations des produits
-        $('.f343d9ce').each((index, element) => {
-            // const name = $(element).find('.listing-title').text().trim();
-            const price = $(element).find('.f343d9ce').text().trim();
-            // const location = $(element).find('.listing-location').text().trim();
-            // const imageUrl = $(element).find('.listing-image img').attr('src');
+         productLis.each((index, element) => {
+            // // const name = $(element).find('.listing-title').text().trim();
+            // const price = $(element).find('.f343d9ce').text().trim();
+            // // const location = $(element).find('.listing-location').text().trim();
+            // // const imageUrl = $(element).find('.listing-image img').attr('src');
+              productHtmls.push($.html(element));
 
             // Stocker les détails du produit dans le tableau
             products.push({
@@ -45,7 +47,8 @@ router.get('/scrape', async (req, res) => {
         });
 
         // Envoyer les données extraites en tant que réponse JSON
-        res.json({ products });
+         res.json({ productHtmls });
+        // res.json({ products });
     } catch (error) {
         console.error('Erreur lors du scraping :', error);
         res.status(500).json({ error: 'Une erreur est survenue lors du scraping' });
