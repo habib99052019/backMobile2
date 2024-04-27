@@ -14,7 +14,7 @@ const cheerio = require('cheerio');
 // const app = express();
 
 // Endpoint pour le scraping
-router.get('/scrape', async (req, res) => {
+app.get('/scrape', async (req, res) => {
     try {
         // URL de la page à scraper
         const url = 'https://www.bayut.com/for-sale/apartments/dubai/';
@@ -25,30 +25,19 @@ router.get('/scrape', async (req, res) => {
         // Charger le contenu HTML dans Cheerio
         const $ = cheerio.load(data);
 
-        // Tableau pour stocker les détails des produits
-        const products = [];
-         const productHtmls = [];
-          const productLis = $('._357a9937');
-        // Récupérer les éléments qui contiennent les informations des produits
-         productLis.each((index, element) => {
-            // // const name = $(element).find('.listing-title').text().trim();
-            // const price = $(element).find('.f343d9ce').text().trim();
-            // // const location = $(element).find('.listing-location').text().trim();
-            // // const imageUrl = $(element).find('.listing-image img').attr('src');
-              productHtmls.push($.html(element));
+        // Sélectionner tous les éléments <li> qui contiennent les produits
+        const productLis = $('.ef447dde');
 
-            // Stocker les détails du produit dans le tableau
-            // products.push({
-            //     // name,
-            //     price,
-            //     // location,
-            //     // imageUrl
-            // });
+        // Tableau pour stocker le HTML des éléments <li> des produits
+        const productHtmls = [];
+
+        // Parcourir chaque élément <li> et stocker son HTML
+        productLis.each((index, element) => {
+            productHtmls.push($.html(element));
         });
 
         // Envoyer les données extraites en tant que réponse JSON
-         res.json({ productHtmls });
-        // res.json({ products });
+        res.json({ productHtmls });
     } catch (error) {
         console.error('Erreur lors du scraping :', error);
         res.status(500).json({ error: 'Une erreur est survenue lors du scraping' });
