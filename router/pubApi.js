@@ -29,7 +29,7 @@ router.get('/scrape', async (req, res) => {
         const products = [];
 
         // Récupérer les éléments qui contiennent les informations des produits
-        $('.ef447dde').each((index, element) => {
+        $('.c4fc20ba').each((index, element) => {
             // const name = $(element).find('.listing-title').text().trim();
             const price = $(element).find('.f343d9ce').text().trim();
             // const location = $(element).find('.listing-location').text().trim();
