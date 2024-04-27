@@ -14,7 +14,7 @@ const cheerio = require('cheerio');
 // const app = express();
 
 // Endpoint pour le scraping
-app.get('/scrape', async (req, res) => {
+router.get('/scrape', async (req, res) => {
     try {
         // URL de la page à scraper
         const url = 'https://www.bayut.com/for-sale/apartments/dubai/';
