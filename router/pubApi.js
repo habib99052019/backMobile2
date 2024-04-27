@@ -7,6 +7,54 @@ const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 var cron = require('node-cron');
 const axios = require('axios');
+const express = require('express');
+// const axios = require('axios');
+const cheerio = require('cheerio');
+
+const app = express();
+
+// Endpoint pour le scraping
+router.get('/scrape', async (req, res) => {
+    try {
+        // URL de la page à scraper
+        const url = 'https://www.bayut.com/for-sale/apartments/dubai/';
+
+        // Récupérer le contenu HTML de la page
+        const { data } = await axios.get(url);
+
+        // Charger le contenu HTML dans Cheerio
+        const $ = cheerio.load(data);
+
+        // Tableau pour stocker les détails des produits
+        const products = [];
+
+        // Récupérer les éléments qui contiennent les informations des produits
+        $('li.ef447dde').each((index, element) => {
+            // const name = $(element).find('.listing-title').text().trim();
+            const price = $(element).find('span.f343d9ce').text().trim();
+            // const location = $(element).find('.listing-location').text().trim();
+            // const imageUrl = $(element).find('.listing-image img').attr('src');
+
+            // Stocker les détails du produit dans le tableau
+            products.push({
+                // name,
+                price,
+                // location,
+                // imageUrl
+            });
+        });
+
+        // Envoyer les données extraites en tant que réponse JSON
+        res.json({ products });
+    } catch (error) {
+        console.error('Erreur lors du scraping :', error);
+        res.status(500).json({ error: 'Une erreur est survenue lors du scraping' });
+    }
+});
+
+// Port pour le serveur Express
+
+
 const twilio = require('twilio');
 // const accountSid = 'ACc75095edba8992b4e0c2f698a0656cdf';
 // const authToken = '0b843539117bb3fe1cef25304385feab'
