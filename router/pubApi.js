@@ -38,12 +38,12 @@ router.get('/scrape', async (req, res) => {
               productHtmls.push($.html(element));
 
             // Stocker les détails du produit dans le tableau
-            products.push({
-                // name,
-                price,
-                // location,
-                // imageUrl
-            });
+            // products.push({
+            //     // name,
+            //     price,
+            //     // location,
+            //     // imageUrl
+            // });
         });
 
         // Envoyer les données extraites en tant que réponse JSON
