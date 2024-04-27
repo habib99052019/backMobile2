@@ -26,7 +26,7 @@ router.get('/scrape', async (req, res) => {
         const $ = cheerio.load(data);
 
         // Sélectionner tous les éléments <li> qui contiennent les produits
-        const productLis = $('.ef447dde');
+        const productLis = $('.c4fc20ba');
 
         // Tableau pour stocker le HTML des éléments <li> des produits
         const productHtmls = [];
