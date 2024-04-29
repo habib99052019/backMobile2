@@ -98,11 +98,16 @@ router.post('/distance', async (req, res) => {
 router.get('/distance', async (req, res) => {
     //const distance = haversineDistance(user1.lat, user1.lon, user2.lat, user2.lon);
     var prods= await prodSchema.find()
+      var tabProdDist=[]
   var   user={
         Lat : 37.7331802307401,
        Long : -122.02108629047869
     }
-    var tabProdDist= prods.filter(ele=>haversineDistance(ele.caractes[0].position.latitude,ele.caractes[0].position.longitude, user.lat, user.long)==true)
+    for (let i = 0; i < prods.length; i++) {
+        if(haversineDistance(prods[i].caractes[0].position.latitude,prods[i].caractes[0].position.longitude, user.lat, user.long)==true){
+         tabProdDistvar.push(prods[i])
+        }
+    }
      res.send({len:tabProdDist.length}); // Envoyer la distance en réponse
 });
 router.get('/', async (req, res) => {
