@@ -66,6 +66,7 @@ const tab=[]
 
 // }
 // func()
+
 console.log("declarer super prod")
 const user1 = { lat: 48.8566, lon: 2.3522 }; // Paris, France
 const user2 = { lat: 40.7128, lon: -74.0060 }; // New York, USA
@@ -93,6 +94,16 @@ router.post('/distance', async (req, res) => {
     var prods= await prodSchema.find()
     var tabProdDist= prods.filter(ele=>haversineDistance(ele.caractes[0].position.latitude,ele.caractes[0].position.longitude, req.body.lat, req.body.lon)==true)
      res.send(tabProdDist); // Envoyer la distance en réponse
+});
+router.get('/distance', async (req, res) => {
+    //const distance = haversineDistance(user1.lat, user1.lon, user2.lat, user2.lon);
+    var prods= await prodSchema.find()
+  var   user={
+        Lat : 37.7331802307401,
+       Long : -122.02108629047869
+    }
+    var tabProdDist= prods.filter(ele=>haversineDistance(ele.caractes[0].position.latitude,ele.caractes[0].position.longitude, user.lat, user.long)==true)
+     res.send({len:tabProdDist.length}); // Envoyer la distance en réponse
 });
 router.get('/', async (req, res) => {
   
