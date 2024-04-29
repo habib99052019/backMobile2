@@ -100,7 +100,7 @@ router.post('/distance', async (req, res) => {
 router.get('/distance', async (req, res) => {
     //const distance = haversineDistance(user1.lat, user1.lon, user2.lat, user2.lon);
     const tab=[]
-  res.send({me: haversineDistance(user1.lat, user1.lon,user2.lat,user2.lon) })
+
      var prods= await prodSchema.find()
    for (let i = 0; i < prods.length; i++) {
  var dis = haversineDistance(prods[i].caractes[0].position.latitude, prods[i].caractes[0].position.longitude,user2.lat,user2.lon)
