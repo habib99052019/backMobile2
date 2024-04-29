@@ -105,7 +105,7 @@ router.get('/distance', async (req, res) => {
     }
     for (let i = 0; i < prods.length; i++) {
         //if(haversineDistance(prods[i].caractes[0].position.latitude,prods[i].caractes[0].position.longitude, user.lat, user.long)==true){
-         tabProdDistvar.push(haversineDistance(prods[i].caractes[0].position.latitude,prods[i].caractes[0].position.longitude, user.lat, user.long))
+         tabProdDist.push(haversineDistance(prods[i].caractes[0].position.latitude,prods[i].caractes[0].position.longitude, user.lat, user.long))
       //  }
     }
      // res.send({len:tabProdDist.length});
