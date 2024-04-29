@@ -91,19 +91,14 @@ function haversineDistance(lat1, lon1, lat2, lon2) {
 
  haversineDistance(user1.lat, user1.lon,user2.lat,user2.lon) 
 // Route pour calculer la distance entre les deux utilisateurs
+
 router.post('/distance', async (req, res) => {
-    const distance = haversineDistance(user1.lat, user1.lon, user2.lat, user2.lon);
-    var prods= await prodSchema.find()
-    var tabProdDist= prods.filter(ele=>haversineDistance(ele.caractes[0].position.latitude,ele.caractes[0].position.longitude, req.body.lat, req.body.lon)==true)
-     res.send(tabProdDist); // Envoyer la distance en réponse
-});
-router.get('/distance', async (req, res) => {
     //const distance = haversineDistance(user1.lat, user1.lon, user2.lat, user2.lon);
     const tab=[]
 
      var prods= await prodSchema.find()
    for (let i = 0; i < prods.length; i++) {
- var dis = haversineDistance(prods[i].caractes[0].position.latitude, prods[i].caractes[0].position.longitude,user2.lat,user2.lon)
+ var dis = haversineDistance(prods[i].caractes[0].position.latitude, prods[i].caractes[0].position.longitude,req.body.lat,req.body.lon)
        if(dis<16)
        {
           tab.push(prods[i]) 
