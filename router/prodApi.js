@@ -104,7 +104,11 @@ router.get('/distance', async (req, res) => {
      var prods= await prodSchema.find()
    for (let i = 0; i < prods.length; i++) {
  var dis = haversineDistance(prods[i].caractes[0].position.latitude, prods[i].caractes[0].position.longitude,user2.lat,user2.lon)
-  tab.push(dis)
+       if(dis<16)
+       {
+          tab.push(prods[i]) 
+       }
+  
 }
   res.send(tab)
 });
