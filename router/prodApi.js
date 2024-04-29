@@ -68,8 +68,8 @@ const tab=[]
 // func()
 
 console.log("declarer super prod")
-const user1 = { lat: 48.8566, lon: 2.3522 }; // Paris, France
-const user2 = { lat: 40.7128, lon: -74.0060 }; // New York, USA
+const user1 = { lat: 37.59549894134107, lon: -122.02108629047869 }; // Paris, France
+const user2 = { lat: 37.7331802307401, lon: -122.02108629047869 }; // New York, USA
 
 function haversineDistance(lat1, lon1, lat2, lon2) {
     const R = 6371; // Rayon de la Terre en kilomètres
@@ -89,6 +89,7 @@ function haversineDistance(lat1, lon1, lat2, lon2) {
     return distance
 }
 
+ haversineDistance(user1.lat, user1.lon,user2.lat,user2.lon) 
 // Route pour calculer la distance entre les deux utilisateurs
 router.post('/distance', async (req, res) => {
     const distance = haversineDistance(user1.lat, user1.lon, user2.lat, user2.lon);
@@ -98,21 +99,7 @@ router.post('/distance', async (req, res) => {
 });
 router.get('/distance', async (req, res) => {
     //const distance = haversineDistance(user1.lat, user1.lon, user2.lat, user2.lon);
-    var prods= await prodSchema.find()
-      var tabProdDist=[]
-  var   user={
-        Lat : 37.7331802307401,
-       Long : -122.02108629047869
-    }
-    for (let i = 0; i < prods.length; i++) {
-        //if(haversineDistance(prods[i].caractes[0].position.latitude,prods[i].caractes[0].position.longitude, user.lat, user.long)==true){
-      //   tabProdDist.push(haversineDistance(prods[i].caractes[0].position.latitude,prods[i].caractes[0].position.longitude, user.lat, user.long))
-      //  }
-        tabProdDist.push({lat:prods[i].caractes[0].position.latitude,
-                         lon:prods[i].caractes[0].position.longitude})
-    }
-     // res.send({len:tabProdDist.length});
-    res.send(tabProdDist)// Envoyer la distance en réponse
+  res.send({me: haversineDistance(user1.lat, user1.lon,user2.lat,user2.lon) })
 });
 router.get('/', async (req, res) => {
   
