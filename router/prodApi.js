@@ -104,11 +104,12 @@ router.get('/distance', async (req, res) => {
        Long : -122.02108629047869
     }
     for (let i = 0; i < prods.length; i++) {
-        if(haversineDistance(prods[i].caractes[0].position.latitude,prods[i].caractes[0].position.longitude, user.lat, user.long)==true){
-         tabProdDistvar.push(prods[i])
-        }
+        //if(haversineDistance(prods[i].caractes[0].position.latitude,prods[i].caractes[0].position.longitude, user.lat, user.long)==true){
+         tabProdDistvar.push(haversineDistance(prods[i].caractes[0].position.latitude,prods[i].caractes[0].position.longitude, user.lat, user.long))
+      //  }
     }
-     res.send({len:tabProdDist.length}); // Envoyer la distance en réponse
+     // res.send({len:tabProdDist.length});
+    res.send(tabProdDist)// Envoyer la distance en réponse
 });
 router.get('/', async (req, res) => {
   
