@@ -106,8 +106,10 @@ router.get('/distance', async (req, res) => {
     }
     for (let i = 0; i < prods.length; i++) {
         //if(haversineDistance(prods[i].caractes[0].position.latitude,prods[i].caractes[0].position.longitude, user.lat, user.long)==true){
-         tabProdDist.push(haversineDistance(prods[i].caractes[0].position.latitude,prods[i].caractes[0].position.longitude, user.lat, user.long))
+      //   tabProdDist.push(haversineDistance(prods[i].caractes[0].position.latitude,prods[i].caractes[0].position.longitude, user.lat, user.long))
       //  }
+        tabProdDist.push({lat:prods[i].caractes[0].position.latitude,
+                         lon:prods[i].caractes[0].position.longitude})
     }
      // res.send({len:tabProdDist.length});
     res.send(tabProdDist)// Envoyer la distance en réponse
