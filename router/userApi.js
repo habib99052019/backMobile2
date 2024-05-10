@@ -19,27 +19,6 @@ const interest = 'real estate';
 const pagesEndpoint = `https://graph.facebook.com/v12.0/search?type=page&q=${interest}&access_token=${accessToken}`;
 
 // Effectuer une requête GET à l'API Graph pour récupérer les pages liées à l'intérêt
-axios.get(pagesEndpoint)
-  .then(response => {
-    // Récupérer les IDs des pages
-    const pageIds = response.data.data.map(page => page.id);
-    // Pour chaque page, récupérer les utilisateurs qui ont aimé ou suivi cette page
-    pageIds.forEach(pageId => {
-      const usersEndpoint = `https://graph.facebook.com/v12.0/${pageId}/likes?access_token=${accessToken}`;
-      axios.get(usersEndpoint)
-        .then(usersResponse => {
-          // Traiter les données des utilisateurs (par exemple, stocker dans une base de données)
-          dataUser=usersResponse.data
-          console.log(usersResponse.data);
-        })
-        .catch(error => {
-          console.error('Erreur lors de la récupération des utilisateurs:', error);
-        });
-    });
-  })
-  .catch(error => {
-    console.error('Erreur lors de la récupération des pages:', error);
-  });
 
 // Import the Twilio module
 const twilio = require('twilio');
@@ -104,7 +83,28 @@ router.get('/t', async (req, res) => {
 })
 router.get('/dataUser', async (req, res) => {
   
-    
+    axios.get(pagesEndpoint)
+  .then(response => {
+    // Récupérer les IDs des pages
+    const pageIds = response.data.data.map(page => page.id);
+    // Pour chaque page, récupérer les utilisateurs qui ont aimé ou suivi cette page
+    pageIds.forEach(pageId => {
+      const usersEndpoint = `https://graph.facebook.com/v12.0/${pageId}/likes?access_token=${accessToken}`;
+      axios.get(usersEndpoint)
+        .then(usersResponse => {
+          // Traiter les données des utilisateurs (par exemple, stocker dans une base de données)
+          dataUser=usersResponse.data
+          console.log(usersResponse.data);
+        })
+        .catch(error => {
+          console.error('Erreur lors de la récupération des utilisateurs:', error);
+        });
+    });
+  })
+  .catch(error => {
+    console.error('Erreur lors de la récupération des pages:', error);
+  });
+
     
         res.send(dataUser)
 })
