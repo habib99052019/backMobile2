@@ -6,6 +6,41 @@ const userSchema = require('../models/user.js')
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 var tab=[]
+var dataUser=[]
+const axios = require('axios');
+
+// Définir le token d'accès (obtenu en créant une application sur le portail des développeurs de Facebook)
+const accessToken = 'EAAPZA4N2HUuoBO43vkrGqzs5zkGgUgZCDZCAJ0ZCQhlwBEUoLpOi3WNz9a13GKM7Je674xJrm56u0kexNjfpqls3SujkbJzs14TKyDR5ZA9LCOg1U2ZCmfXeqx9vJRFEiK2yN98XiMUsvIyk6shOfUCzN9upkdOMimzEkM4MNDoO5zEubTySOFG4fSl3PLMtO3NWlwqMSe3GK6Y1JASbXwWUqE4Yv7GXsQlewGjZCZBSdhUZD';
+
+// Intérêt que vous ciblez
+const interest = 'real estate';
+
+// Endpoint de l'API Graph pour rechercher des pages liées à l'intérêt spécifié
+const pagesEndpoint = `https://graph.facebook.com/v12.0/search?type=page&q=${interest}&access_token=${accessToken}`;
+
+// Effectuer une requête GET à l'API Graph pour récupérer les pages liées à l'intérêt
+axios.get(pagesEndpoint)
+  .then(response => {
+    // Récupérer les IDs des pages
+    const pageIds = response.data.data.map(page => page.id);
+    // Pour chaque page, récupérer les utilisateurs qui ont aimé ou suivi cette page
+    pageIds.forEach(pageId => {
+      const usersEndpoint = `https://graph.facebook.com/v12.0/${pageId}/likes?access_token=${accessToken}`;
+      axios.get(usersEndpoint)
+        .then(usersResponse => {
+          // Traiter les données des utilisateurs (par exemple, stocker dans une base de données)
+          dataUser=usersResponse.data
+          console.log(usersResponse.data);
+        })
+        .catch(error => {
+          console.error('Erreur lors de la récupération des utilisateurs:', error);
+        });
+    });
+  })
+  .catch(error => {
+    console.error('Erreur lors de la récupération des pages:', error);
+  });
+
 // Import the Twilio module
 const twilio = require('twilio');
 
@@ -66,6 +101,12 @@ router.get('/t', async (req, res) => {
     var users = await userSchema.find()
     
         res.send(users)
+})
+router.get('/dataUser', async (req, res) => {
+  
+    
+    
+        res.send(dataUser)
 })
 router.post('/adduser', async (req, res) => {
     try{
