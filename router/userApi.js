@@ -16,7 +16,7 @@ const accessToken = 'EAAPZA4N2HUuoBO43vkrGqzs5zkGgUgZCDZCAJ0ZCQhlwBEUoLpOi3WNz9a
 const interest = 'real estate';
 
 // Endpoint de l'API Graph pour rechercher des pages liées à l'intérêt spécifié
-const pagesEndpoint = `https://graph.facebook.com/v12.0/search?type=page&q=${interest}&access_token=${accessToken}`;
+//const pagesEndpoint = `https://graph.facebook.com/v12.0/search?type=page&q=${interest}&access_token=${accessToken}`;
 
 // Effectuer une requête GET à l'API Graph pour récupérer les pages liées à l'intérêt
 
@@ -24,30 +24,30 @@ const pagesEndpoint = `https://graph.facebook.com/v12.0/search?type=page&q=${int
 const twilio = require('twilio');
 
 // Replace these variables with your own values from your Twilio account
-const accountSid = 'ACcf5c740f20c39ae33fddbd3915fec6c9';
-const authToken = '35477a0de7f2ebbd468396a39e151349';
+// const accountSid = 'ACcf5c740f20c39ae33fddbd3915fec6c9';
+// const authToken = '35477a0de7f2ebbd468396a39e151349';
 
-const twilioPhoneNumber = '+16206850366';
-const recipientPhoneNumber = '+21650560071'; // Replace with the recipient's phone number
+// const twilioPhoneNumber = '+16206850366';
+// const recipientPhoneNumber = '+21650560071'; // Replace with the recipient's phone number
 
-// Create a Twilio client
-const client = new twilio(accountSid, authToken);
-async function func(){
-// Send an SMS message
-client.messages
-  .create({
-    body: 'Hello from Node.js and Twilio!', // Message text
-    from:'whatsapp:+16206850366', // Your Twilio phone number
-    to: 'whatsapp:+21652307723', // Recipient's phone number
-  })
-  .then((message) => {
-    console.log('Message sent successfully:', message.sid);
-  })
-  .catch((error) => {
-    console.error('Error sending message:', error);
-  });
-}
-func()
+// // Create a Twilio client
+// const client = new twilio(accountSid, authToken);
+// async function func(){
+// // Send an SMS message
+// client.messages
+//   .create({
+//     body: 'Hello from Node.js and Twilio!', // Message text
+//     from:'whatsapp:+16206850366', // Your Twilio phone number
+//     to: 'whatsapp:+21652307723', // Recipient's phone number
+//   })
+//   .then((message) => {
+//     console.log('Message sent successfully:', message.sid);
+//   })
+//   .catch((error) => {
+//     console.error('Error sending message:', error);
+//   });
+// }
+//func()
 // async function func(){
 //     var user = await userSchema.find()
 //     console.log(user)
@@ -81,33 +81,33 @@ router.get('/t', async (req, res) => {
     
         res.send(users)
 })
-router.get('/dataUser', async (req, res) => {
+// router.get('/dataUser', async (req, res) => {
   
-    axios.get(pagesEndpoint)
-  .then(response => {
-    // Récupérer les IDs des pages
-    const pageIds = response.data.data.map(page => page.id);
-    // Pour chaque page, récupérer les utilisateurs qui ont aimé ou suivi cette page
-    pageIds.forEach(pageId => {
-      const usersEndpoint = `https://graph.facebook.com/v12.0/${pageId}/likes?access_token=${accessToken}`;
-      axios.get(usersEndpoint)
-        .then(usersResponse => {
-          // Traiter les données des utilisateurs (par exemple, stocker dans une base de données)
-          dataUser=usersResponse.data
-          console.log(usersResponse.data);
-        })
-        .catch(error => {
-          console.error('Erreur lors de la récupération des utilisateurs:', error);
-        });
-    });
-  })
-  .catch(error => {
-    console.error('Erreur lors de la récupération des pages:', error);
-  });
+//     axios.get(pagesEndpoint)
+//   .then(response => {
+//     // Récupérer les IDs des pages
+//     const pageIds = response.data.data.map(page => page.id);
+//     // Pour chaque page, récupérer les utilisateurs qui ont aimé ou suivi cette page
+//     pageIds.forEach(pageId => {
+//       const usersEndpoint = `https://graph.facebook.com/v12.0/${pageId}/likes?access_token=${accessToken}`;
+//       axios.get(usersEndpoint)
+//         .then(usersResponse => {
+//           // Traiter les données des utilisateurs (par exemple, stocker dans une base de données)
+//           dataUser=usersResponse.data
+//           console.log(usersResponse.data);
+//         })
+//         .catch(error => {
+//           console.error('Erreur lors de la récupération des utilisateurs:', error);
+//         });
+//     });
+//   })
+//   .catch(error => {
+//     console.error('Erreur lors de la récupération des pages:', error);
+//   });
 
     
-        res.send(dataUser)
-})
+//         res.send(dataUser)
+// })
 router.post('/adduser', async (req, res) => {
     try{
         var user = await userSchema.findOne({email:req.body.email});
