@@ -6,6 +6,7 @@ const uuid = require('uuid-v4');
 const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
 const path=require('path');
+const uploadDirectory = path.join(__dirname, 'uploads');
 // const storage = multer.memoryStorage();
 // const upload = multer({ storage: storage });
 const fs = require('fs')
@@ -56,7 +57,9 @@ app.use('/laniding',landing);
 app.use('/emp',emp);
 app.use('/rev',rev);
 app.use('/chat',chat);
-const uploadDirectory = path.join(__dirname, 'uploads');
+app.use('/uploads', express.static(uploadDirectory));
+
+
 let img;
 // Configurer Multer pour gérer les téléchargements
 const storage = multer.diskStorage({
