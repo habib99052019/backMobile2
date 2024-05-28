@@ -19,11 +19,13 @@ const  userSchema  = new mongoose.Schema({
     city:String ,
     likes:[],
     appel:[],
+    image :String ,
     localistion:{
       lang:Number,
       long:Number
 
     },
+    
     detailsAppel:[]
    
   });
