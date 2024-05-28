@@ -6,11 +6,13 @@ const chatSchema  = new mongoose.Schema({
     dateSending:String,
     userReceiv: {
             usid: String,
-            username: String
+            username: String,
+        image: String 
         },
         userSend: {
             usid: String,
-            username: String
+            username: String,
+            image: String 
         },
         product: { type: Schema.Types.ObjectId, ref:'prodSchema'},
         msgs: []
