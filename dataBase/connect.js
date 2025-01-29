@@ -14,7 +14,7 @@ const mongoose = require('mongoose');
 //?retryWrites=true&w=majori 
 //mongodb+srv://habibfullstack90:<password>@cluster0.owwrwt9.mongodb.net/
 //mongodb+srv://webmaster:webmaster123@cluster0.jc0r9.mongodb.net/comm10002
-mongoose.connect('mongodb+srv://heartads715:iRSqo1zU4qtLZzDo@cluster0.nbkyqow.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://webmaster:webmaster123@cluster0.jc0r9.mongodb.net/tunisieSantté',
 {useNewUrlParser: true, 
 useUnifiedTopology: true,
 }).then(()=>console.log('Successfully connected to database.')).catch((e)=>console.error('Error in connection',e));
