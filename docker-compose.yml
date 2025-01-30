@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  backend_mobile_ecommerce:
+    image: backend_mobile_ecommerce
+    container_name: backend_mobile_ecommerce
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    env_file:
+      - .env
+    ports:
+      - 5900:5900
+
