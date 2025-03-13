@@ -188,7 +188,8 @@ router.post('/login', async (req, res) => {
                 console.log(test ,5)
             if (test) {
                 var token = jwt.sign({ _id: user._id }, 'privateKey', { expiresIn: '1d' })
-
+               user.token=token
+              await user.save()
                 console.log(user);
                 // res.send({token: token})  pour envoyer comme objet  json 
                 res.header('Authorization', token).send({ 

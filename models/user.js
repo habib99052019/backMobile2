@@ -11,6 +11,7 @@ const  userSchema  = new mongoose.Schema({
     historique:[],
     login:String,
     password:String, 
+    token:String,
     chat:[],
     products:[{ type: Schema.Types.ObjectId, ref:'prodSchema'}], /// kima joueur fi eurobet les produits lina 3andhom schema khater kol produit aandou Id mte3ou
     favorites:[],

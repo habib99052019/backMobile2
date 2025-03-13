@@ -73,14 +73,38 @@ const storage = multer.diskStorage({
   
   }
 });
+const fileFilter = (req, file, cb) => {
+  const allowedTypes = /jpeg|jpg|png|gif/;
+  const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
+  const mimetype = allowedTypes.test(file.mimetype);
 
+  if (extname && mimetype) {
+    return cb(null, true);
+  } else {
+    cb(new Error('Seules les images sont autorisées !'));
+  }
+};
 const upload = multer({ storage: storage });
+const upload2 = multer({
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // Limite à 5MB par fichier
+  fileFilter: fileFilter
+});
 
 // Définir la route pour le téléchargement de fichiers
 app.post('/upload', upload.single('image'), (req, res) => {
   // Gérer la réponse après le téléchargement du fichier
   res.send({message:'Fichier téléchargé avec succès',img:img});
 });
-
+app.post('/uploadPlusieur', upload.array('images', 10), (req, res) => {
+  try {
+    res.status(200).json({
+      message: 'Images téléchargées avec succès !',
+      files: req.files
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 const port = process.env.PORT || 5900;
 app.listen(port,()=>console.log(`Server listen on the port ${port}`)) ;
