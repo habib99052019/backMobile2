@@ -94,13 +94,15 @@ const upload2 = multer({
 // Définir la route pour le téléchargement de fichiers
 app.post('/upload', upload.single('image'), (req, res) => {
   // Gérer la réponse après le téléchargement du fichier
-  res.send({message:'Fichier téléchargé avec succès',img:img});
+  console.log(img,'jjjjjj')
+  res.send({message:'Fichier téléchargé avec ' ,img:img});
 });
 app.post('/uploadPlusieur', upload.array('images', 10), (req, res) => {
   try {
-    res.status(200).json({
+    const fileNames = req.files.map(file => file.filename);
+    res.send({
       message: 'Images téléchargées avec succès !',
-      files: req.files
+      files: fileNames
     });
   } catch (error) {
     res.status(400).json({ error: error.message });
