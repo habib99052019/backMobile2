@@ -7,7 +7,7 @@ const  userSchema  = new mongoose.Schema({
     email: String,
     reviews:[{ type: Schema.Types.ObjectId, ref:'revSchema'}],
     pseudoName:String,
-    notis:[{ type: Schema.Types.ObjectId, ref:'notiSchema'}],
+    notis:[],
     historique:[],
     login:String,
     password:String, 

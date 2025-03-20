@@ -64,7 +64,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-    var user=  await userSchema.findById(req.params.id).populate('products').populate('reviews');
+    var user=  await userSchema.findById(req.params.id).populate('products')
     res.send(user)
 })
 router.get('/prod/:id', async (req, res) => {

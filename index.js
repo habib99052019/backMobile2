@@ -1,4 +1,3 @@
-console.log("welcom mr taher")
 const express = require('express')//obligtoir mil module express
 var bodyParser = require('body-parser');//yrdha json mhma knyt yli jya
 const app = express();//kima hekka express module  le routre
@@ -7,6 +6,8 @@ const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
 const path=require('path');
 const uploadDirectory = path.join(__dirname, 'uploads');
+const { StreamClient } = require('@stream-io/node-sdk');
+
 // const storage = multer.memoryStorage();
 // const upload = multer({ storage: storage });
 const fs = require('fs')
@@ -94,19 +95,38 @@ const upload2 = multer({
 // Définir la route pour le téléchargement de fichiers
 app.post('/upload', upload.single('image'), (req, res) => {
   // Gérer la réponse après le téléchargement du fichier
-  console.log(img,'jjjjjj')
-  res.send({message:'Fichier téléchargé avec ' ,img:img});
-});
+  res.send({message:'Fichier téléchargé avec succès',img:img});
+})
 app.post('/uploadPlusieur', upload.array('images', 10), (req, res) => {
   try {
     const fileNames = req.files.map(file => file.filename);
-    res.send({
+    res.status(200).json({
       message: 'Images téléchargées avec succès !',
       files: fileNames
     });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
-});
+})
+
+app.post('/get-token', (req, res) => {
+    const { userId,key,secret } = req.body;
+
+    if (!userId) {
+        return res.status(400).json({ error: 'User ID is required' });
+    }
+
+    const apiKey = key;
+    const apiSecret = secret;
+
+    const client = new StreamClient(apiKey, apiSecret);
+
+    const validity = 24 * 60 * 60;
+
+    const token = client.generateUserToken({ user_id: userId, validity_in_seconds: validity });
+
+    res.json({ token });
+})
+
 const port = process.env.PORT || 5900;
-app.listen(port,()=>console.log(`Server listen on the port ${port}`)) ;
+app.listen(port,"0.0.0.0",()=>console.log(`Server listen on the port ${port}`)) ;
