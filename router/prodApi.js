@@ -88,20 +88,37 @@ function haversineDistance(lat1, lon1, lat2, lon2) {
   // }
   return distance
 }
+function calculateDistance(lat1, lon1, lat2, lon2) {
+  const toRad = angle => (angle * Math.PI) / 180;
+  const R = 6371; // Rayon de la Terre en km
 
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c; // Distance en km
+}
 haversineDistance(user1.lat, user1.lon, user2.lat, user2.lon)
 // Route pour calculer la distance entre les deux utilisateurs
 router.post('/nearby-products', async (req, res) => {
   const  lat  =  req.body.lat
   const long =req.body.long
+  // console.log(lat,"eee")
 
   try {
     // Supposons que tu récupères les produits comme ça :
     const products = await prodSchema.find(); // à adapter selon ton modèle
 
-    const productsWithDistance = products.map(product => {
+    const productsWithDistance = products.filter(product => product.city && product.city.includes(';')).map(product => {
       const [productLat, productLong] = product.city.split(';').map(Number);
-      const distance = haversineDistance(lat, long, productLat, productLong);
+      // console.log(productLong)
+      const distance = calculateDistance(lat, long, productLat, productLong);
+      // console.log(distance,"eer")
+    
       return {
         ...product.toObject(), // ou juste product si ce n’est pas un mongoose doc
         distance
