@@ -91,7 +91,31 @@ function haversineDistance(lat1, lon1, lat2, lon2) {
 
 haversineDistance(user1.lat, user1.lon, user2.lat, user2.lon)
 // Route pour calculer la distance entre les deux utilisateurs
+router.post('/nearby-products', async (req, res) => {
+  const  lat  =  req.body.lat
+  const long =req.body.long
 
+  try {
+    // Supposons que tu récupères les produits comme ça :
+    const products = await prodSchema.find(); // à adapter selon ton modèle
+
+    const productsWithDistance = products.map(product => {
+      const [productLat, productLong] = product.city.split(';').map(Number);
+      const distance = haversineDistance(lat, long, productLat, productLong);
+      return {
+        ...product.toObject(), // ou juste product si ce n’est pas un mongoose doc
+        distance
+      };
+    });
+
+    const sortedProducts = productsWithDistance.sort((a, b) => a.distance - b.distance);
+
+    res.json(sortedProducts);
+  } catch (error) {
+    console.error('Erreur lors de la récupération des produits proches :', error);
+    res.status(500).json({ error: 'Erreur interne du serveur' });
+  }
+});
 router.post('/distance', async (req, res) => {
   //const distance = haversineDistance(user1.lat, user1.lon, user2.lat, user2.lon);
   const tab = []
