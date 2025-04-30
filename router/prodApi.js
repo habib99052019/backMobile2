@@ -111,7 +111,7 @@ router.post('/nearby-products', async (req, res) => {
 
   try {
     // Supposons que tu récupères les produits comme ça :
-    const products = await prodSchema.find(); // à adapter selon ton modèle
+    const products = await prodSchema.find().populate('userPosterId'); // à adapter selon ton modèle
 
     const productsWithDistance = products.filter(product => product.city && product.city.includes(';')).map(product => {
       const [productLat, productLong] = product.city.split(';').map(Number);
