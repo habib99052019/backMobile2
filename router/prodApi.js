@@ -126,8 +126,10 @@ router.post('/nearby-products', async (req, res) => {
     });
 
     const sortedProducts = productsWithDistance.sort((a, b) => a.distance - b.distance);
-
-    res.json(sortedProducts);
+   const pubs = await prodSchema.find({isPub:true})
+    const pubsJson = pubs.map(pub => pub.toJSON());
+    const prodsFinal = sortedProducts.concat(pubsJson);
+    res.json(prodsFinal);
   } catch (error) {
     console.error('Erreur lors de la récupération des produits proches :', error);
     res.status(500).json({ error: 'Erreur interne du serveur' });
