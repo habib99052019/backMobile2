@@ -17,7 +17,8 @@ const prodSchema = new mongoose.Schema({
   ville: String,
   city: String, /// kol produit aandou review mte3ou list fergha khaleha kima chat w caractes
   catigories: String,
-  price: String
+  price: String,
+  lienPub:String
 })
 
 module.exports = mongoose.model('prodSchema', prodSchema);
