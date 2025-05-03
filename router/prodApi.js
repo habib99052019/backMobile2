@@ -104,7 +104,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 }
 haversineDistance(user1.lat, user1.lon, user2.lat, user2.lon)
 // Route pour calculer la distance entre les deux utilisateurs
-router.post('/nearby-products', async (req, res) => {
+router.post('/dist/nearby-products', async (req, res) => {
   const  lat  =  req.body.lat
   const long =req.body.long
   // console.log(lat,"eee")
